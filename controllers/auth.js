@@ -6,4 +6,8 @@ async function renderSignupForm(req, res) {
   res.render("auth/signup");
 }
 
-module.exports = { renderLoginForm, renderSignupForm };
+async function addUserToDb(req, res) {
+  console.log(req.body);
+}
+
+module.exports = { renderLoginForm, renderSignupForm, addUserToDb };
