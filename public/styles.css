@@ -89,3 +89,16 @@ h1 {
 h2 {
   font-size: 1.25rem;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}

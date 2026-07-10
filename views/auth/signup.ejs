@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head") %>
+  <body>
+    <%- include("../partials/header") %>
+    <main>
+      <form action="" method="POST">
+        <h2>Sign Up</h2>
+        <div class="form-field">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="fullName" />
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" />
+        </div>
+        <div class="form-field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" />
+        </div>
+        <div class="form-field">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" />
+        </div>
+      </form>
+    </main>
+    <%- include("../partials/footer") %>
+  </body>
+</html>
