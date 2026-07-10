@@ -75,6 +75,11 @@ body {
 
 main {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  min-width: 40%;
+  background-color: #ff8559;
+  margin: 2rem;
 }
 
 h1 {
