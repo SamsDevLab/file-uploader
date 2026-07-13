@@ -12,18 +12,35 @@ datasource db {
   provider = "postgresql"
 }
 
+// Latest Draft: Finish working through this on Monday and create a new migration.
+// Need to delete old, dummy data as well!
+
 model User {
-  id       Int      @id @default(autoincrement())
-  email    String   @unique
-  name     String?
-  posts    Post[]
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  password  String
+  folders   Folder[]
+  files     File[]
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean  @default(false)
-  author    User     @relation(fields: [authorId], references: [id])
+model Folder {
+  id        Int    @id @default(autoincrement())
+  author    User   @relation(fields: [authorId], references: [id])
   authorId  Int
+  files     File[]
+}
+
+model File {
+  id        Int     @id @default(autoincrement())
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  Int
+  folder    Folder?  @relation(fields: [folderId], references: [id])
+  folderId  Int?
+}
+
+model Session {
+  id      String    @id
+  sid     String    @unique
+  data    String
+  expires DateTime
 }
