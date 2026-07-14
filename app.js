@@ -14,6 +14,9 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(session(sessionConfig));
+app.use(passport.session());
+
+require("./config/passport")(passport);
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
