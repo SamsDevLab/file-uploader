@@ -13,12 +13,23 @@ async function addUserToDb(req, res, next) {
   const newUserData = userData;
   const newUserId = await userModel.addNewUser(newUserData);
 
-  // req.login(newUserId.id, function (err) {
-  //   if (err) {
-  //     return next(err);
-  //   }
-  //   return res.redirect("/");
-  // });
+  req.login(newUserId, function (err) {
+    if (err) {
+      return next(err);
+    }
+    console.log("You're logged in!");
+    res.redirect("/");
+  });
 }
 
-module.exports = { renderLoginForm, renderSignupForm, addUserToDb };
+function logOut(req, res, next) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    console.log("You're logged out!");
+    res.redirect("/");
+  });
+}
+
+module.exports = { renderLoginForm, renderSignupForm, addUserToDb, logOut };
