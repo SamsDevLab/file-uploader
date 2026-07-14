@@ -8,4 +8,6 @@ router.get("/login", authController.renderLoginForm);
 router.get("/signup", authController.renderSignupForm);
 router.post("/signup", validateUserSignUp, authController.addUserToDb);
 
+router.get("/logout", authController.logOut);
+
 module.exports = router;
