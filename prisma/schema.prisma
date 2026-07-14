@@ -12,9 +12,6 @@ datasource db {
   provider = "postgresql"
 }
 
-// Latest Draft: Finish working through this on Monday and create a new migration.
-// Need to delete old, dummy data as well!
-
 model User {
   id        Int     @id @default(autoincrement())
   email     String  @unique
