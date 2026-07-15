@@ -6,6 +6,7 @@ const session = require("express-session");
 const sessionConfig = require("./config/session");
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
+const dashboardRouter = require("./routes/dashboardRoute");
 const errorHandler = require("./middleware/errorHandler");
 
 app.use(express.static("public"));
@@ -18,8 +19,14 @@ app.use(passport.session());
 
 require("./config/passport")(passport);
 
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
+app.use("/dashboard", dashboardRouter);
 
 app.use(errorHandler);
 
