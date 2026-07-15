@@ -18,7 +18,7 @@ async function addUserToDb(req, res, next) {
       return next(err);
     }
     console.log("You're logged in!");
-    res.redirect("/");
+    res.redirect("/dashboard");
   });
 }
 
