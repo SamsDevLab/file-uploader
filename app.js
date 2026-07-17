@@ -1,12 +1,13 @@
+require("dotenv");
 const express = require("express");
 const app = express();
 const path = require("node:path");
 const passport = require("passport");
 const session = require("express-session");
 const sessionConfig = require("./config/session");
-const indexRouter = require("./routes/index");
-const authRouter = require("./routes/auth");
-const dashboardRouter = require("./routes/dashboardRoute");
+const indexRouter = require("./routes/indexRouter");
+const authRouter = require("./routes/authRouter");
+const dashboardRouter = require("./routes/dashboardRouter");
 const errorHandler = require("./middleware/errorHandler");
 
 app.use(express.static("public"));
