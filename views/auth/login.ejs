@@ -4,18 +4,18 @@
   <body>
     <%- include("../partials/header") %>
     <main>
-      <form action="/auth/login" method="POST">
+      <form class="auth-form" action="/auth/login" method="POST">
         <h2>Log In</h2>
         <% if (errors !== undefined) { %>
           <%  errors.forEach(error => { %>
             <h2><%= error %></h2>
           <% }) %>
         <% } %>
-        <div class="form-field">
+        <div class="auth-form-field">
           <label for="email">Email</label>
           <input type="email" id="email" name="email" />
         </div>
-        <div class="form-field">
+        <div class="auth-form-field">
           <label for="password">Password</label>
           <input type="password" id="password" name="password" />
         </div>
