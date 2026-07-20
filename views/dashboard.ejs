@@ -3,8 +3,30 @@
   <%- include("partials/head.ejs") %>
   <body>
     <%- include("partials/header.ejs") %>
-    <main>
-      <h2>Yo, you've reached the dashboard</h2>
+    <main class="dashboard">
+      <div class="sidebar">
+        <div class="dropdown">
+          <button>+ New</button>
+          <div class="dropdown-content">
+            <form
+              action="/dashboard/upload-file"
+              enctype="multipart/form-data"
+              method="POST"
+            >
+              <label for="file-upload">
+                <input
+                  type="file"
+                  class="form-control-file"
+                  name="uploadedFile"
+                  id="file-upload"
+                />
+              </label>
+              <button>Submit</button>
+            </form>
+            <a href="">Upload folder</a>
+          </div>
+        </div>
+      </div>
     </main>
     <%- include("partials/footer.ejs") %>
   </body>

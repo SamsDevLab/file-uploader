@@ -77,9 +77,8 @@ main {
   flex: 1;
   display: flex;
   justify-content: center;
-  min-width: 40%;
-  background-color: #ff8559;
-  margin: 2rem;
+  min-width: 100%;
+  background-color: beige;
 }
 
 h1 {
@@ -90,15 +89,66 @@ h2 {
   font-size: 1.25rem;
 }
 
-form {
+.auth-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-top: 2rem;
 }
 
-.form-field {
+.auth-form-field {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+}
+
+/******************/
+/*** Dashboard ***/
+/******************/
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+.sidebar {
+  display: grid;
+  min-width: 100%;
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-columns: 1fr;
+  border-right: 2px solid orange;
+  padding: 1.25rem;
+  align-items: center;
+  justify-content: start;
+}
+
+.sidebar button {
+  padding: 1rem;
+}
+
+.sidebar button:hover {
+  cursor: pointer;
+}
+
+/*** Dropdown ***/
+
+.dropdown {
+  position: relative;
+  min-width: 100%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+}
+
+.dropdown-content {
+  border: 2px solid orange;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
