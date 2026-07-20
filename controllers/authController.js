@@ -1,7 +1,10 @@
 const userModel = require("../models/userModel");
 
 async function renderLoginForm(req, res) {
-  res.render("auth/login");
+  const errorMessages = req.session.messages;
+  req.session.messages = [];
+
+  res.render("auth/login", { errors: errorMessages });
 }
 
 async function renderSignupForm(req, res) {
