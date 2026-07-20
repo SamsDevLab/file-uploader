@@ -14,12 +14,12 @@ module.exports = function (passport) {
           });
 
           if (!user) {
-            return done(null, false); //{ message: "Incorrect email" }
+            return done(null, false, { message: "Incorrect email" });
           }
           const match = await bcrypt.compare(password, user.password);
 
           if (!match) {
-            return done(null, false); // { message: "Incorrect password" }
+            return done(null, false, { message: "Incorrect password" });
           }
 
           return done(null, user.id);
