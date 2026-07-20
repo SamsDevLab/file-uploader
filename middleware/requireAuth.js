@@ -1,11 +1,8 @@
 const requireAuth = (req, res, next) => {
   if (req.user === undefined) {
-    const error = { statusCode: 400 };
-
-    const errors = [];
-    errors.push("User must be logged in to view dashboard");
-
-    error.errors = errors;
+    const error = new Error("Authentication failed!");
+    error.statusCode = 400;
+    error.errors = ["User must be logged in to view dashboard"];
 
     return next(error);
   }
