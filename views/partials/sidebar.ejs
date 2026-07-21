@@ -1,0 +1,27 @@
+<div class="sidebar">
+  <div class="dropdown">
+    <button>+ New</button>
+    <div class="dropdown-content">
+      <form
+        action="/dashboard/upload-file"
+        enctype="multipart/form-data"
+        method="POST"
+      >
+        <label for="file-upload">
+          <input
+            type="file"
+            class="form-control-file"
+            name="uploadedFile"
+            id="file-upload"
+          />
+        </label>
+        <button>Submit</button>
+      </form>
+      <button
+        onclick="document.getElementById('create-folder-dialog').showModal()"
+      >
+        New Folder
+      </button>
+    </div>
+  </div>
+</div>

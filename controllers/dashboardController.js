@@ -25,4 +25,8 @@ async function addNewFolderToDb(req, res) {
   res.redirect("/dashboard");
 }
 
-module.exports = { renderDashboard, addNewFolderToDb };
+async function accessFolder(req, res) {
+  console.log(req.params.id);
+}
+
+module.exports = { renderDashboard, addNewFolderToDb, accessFolder };

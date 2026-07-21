@@ -4,40 +4,14 @@
   <body>
     <%- include("partials/header.ejs") %>
     <main class="dashboard">
-      <div class="sidebar">
-        <div class="dropdown">
-          <button>+ New</button>
-          <div class="dropdown-content">
-            <form
-              action="/dashboard/upload-file"
-              enctype="multipart/form-data"
-              method="POST"
-            >
-              <label for="file-upload">
-                <input
-                  type="file"
-                  class="form-control-file"
-                  name="uploadedFile"
-                  id="file-upload"
-                />
-              </label>
-              <button>Submit</button>
-            </form>
-            <button
-              onclick="
-                document.getElementById('create-folder-dialog').showModal()
-              "
-            >
-              New Folder
-            </button>
-          </div>
-        </div>
-      </div>
+      <%- include("partials/sidebar.ejs") %>
       <div id="dash-main">
         <% if (folders !== undefined) { %>
           <% folders.forEach(folder => { %>
               <div class="folder">
-                <h2> <%=folder.name %></h2>
+                <a href="/dashboard/folders/<%= folder.id %>">
+                  <h2> <%=folder.name %> </h2>
+                </a>
               </div>
           <% }) %>
         <% } %>
