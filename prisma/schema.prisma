@@ -24,6 +24,7 @@ model Folder {
   id        Int    @id @default(autoincrement())
   author    User   @relation(fields: [authorId], references: [id])
   authorId  Int
+  name      String
   files     File[]
 }
 
