@@ -192,3 +192,8 @@ h2 {
 .folder {
   border: 1px solid cornflowerblue;
 }
+
+.folder:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}
