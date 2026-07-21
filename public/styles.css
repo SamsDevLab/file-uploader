@@ -130,6 +130,35 @@ h2 {
   cursor: pointer;
 }
 
+#create-folder-dialog {
+  background-color: cornflowerblue;
+  position: absolute;
+
+  transform: translate(575px, 150px);
+  min-height: 20%;
+  min-width: 30%;
+  padding: 1rem;
+}
+
+#create-folder-dialog[open] {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dialog-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.action-btn-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  align-items: center;
+}
+
 /*** Dropdown ***/
 
 .dropdown {

@@ -15,4 +15,6 @@ router.post(
   },
 );
 
+router.post("/create-folder", dashboardController.addNewFolderToDb);
+
 module.exports = router;

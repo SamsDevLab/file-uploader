@@ -2,4 +2,10 @@ async function renderDashboard(req, res) {
   res.render("dashboard");
 }
 
-module.exports = { renderDashboard };
+async function addNewFolderToDb(req, res) {
+  res.render("dashboard", { showModal: false });
+  console.log(req.body);
+  console.log(req.user);
+}
+
+module.exports = { renderDashboard, addNewFolderToDb };

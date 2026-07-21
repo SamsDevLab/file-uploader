@@ -23,11 +23,34 @@
               </label>
               <button>Submit</button>
             </form>
-            <a href="">Upload folder</a>
+            <button
+              onclick="
+                document.getElementById('create-folder-dialog').showModal()
+              "
+            >
+              New Folder
+            </button>
           </div>
         </div>
       </div>
     </main>
     <%- include("partials/footer.ejs") %>
+    <dialog id="create-folder-dialog">
+      <h2>Create a New Folder</h2>
+      <form action="/dashboard/create-folder" method="POST">
+        <div class="dialog-form-field">
+          <label for="newFolder">Folder Name: </label>
+          <input type="text" id="newFolder" name="newFolder" />
+        </div>
+        <div class="action-btn-container">
+          <button
+            onclick="document.getElementById('create-folder-dialog').close()"
+          >
+            Cancel
+          </button>
+          <button>Create</button>
+        </div>
+      </form>
+    </dialog>
   </body>
 </html>
