@@ -33,6 +33,15 @@
           </div>
         </div>
       </div>
+      <div id="dash-main">
+        <% if (folders !== undefined) { %>
+          <% folders.forEach(folder => { %>
+              <div class="folder">
+                <h2> <%=folder.name %></h2>
+              </div>
+          <% }) %>
+        <% } %>
+      </div>
     </main>
     <%- include("partials/footer.ejs") %>
     <dialog id="create-folder-dialog">
