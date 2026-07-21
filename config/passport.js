@@ -40,7 +40,7 @@ module.exports = function (passport) {
         where: { id: id },
       });
 
-      done(null, user);
+      done(null, user.id);
     } catch (error) {
       done(error);
     }
