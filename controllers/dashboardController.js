@@ -1,32 +1,19 @@
 const prisma = require("../lib/prisma");
+const dashboardModel = require("../models/dashboardModel");
 
 async function renderDashboard(req, res) {
-  const userId = req.user;
-  const folders = await prisma.folder.findMany({
-    where: {
-      authorId: userId,
-    },
-  });
-
+  const folders = await dashboardModel.getAllFolders(req);
   res.render("dashboard", { folders: folders });
 }
 
-async function addNewFolderToDb(req, res) {
-  const userId = req.user;
-  const folderName = req.body.newFolder;
-
-  await prisma.folder.create({
-    data: {
-      authorId: userId,
-      name: folderName,
-    },
-  });
-
+async function addNewFolder(req, res) {
+  await dashboardModel.addNewFolderToDb(req);
   res.redirect("/dashboard");
 }
 
 async function accessFolder(req, res) {
-  console.log(req.params.id);
+  const folderContents = await dashboardModel.getCurrentUserFolders(req);
+  res.render("folder", { folderContents: folderContents });
 }
 
-module.exports = { renderDashboard, addNewFolderToDb, accessFolder };
+module.exports = { renderDashboard, addNewFolder, accessFolder };
