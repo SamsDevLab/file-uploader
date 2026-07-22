@@ -22,4 +22,16 @@ async function renameFolder(req, res) {
   res.render("dashboard", { folders: folders });
 }
 
-module.exports = { renderDashboard, addNewFolder, accessFolder, renameFolder };
+async function deleteFolder(req, res) {
+  await dashboardModel.deleteFolderFromDb(req);
+  const folders = await dashboardModel.getAllFolders(req);
+  res.render("dashboard", { folders: folders });
+}
+
+module.exports = {
+  renderDashboard,
+  addNewFolder,
+  accessFolder,
+  renameFolder,
+  deleteFolder,
+};

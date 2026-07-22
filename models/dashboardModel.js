@@ -47,9 +47,17 @@ async function renameFolderInDb(req) {
   });
 }
 
+async function deleteFolderFromDb(req) {
+  const folderId = Number(req.params.id);
+  await prisma.folder.delete({
+    where: { id: folderId },
+  });
+}
+
 module.exports = {
   getAllFolders,
   addNewFolderToDb,
   getFolderContents,
   renameFolderInDb,
+  deleteFolderFromDb,
 };
