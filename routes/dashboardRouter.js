@@ -18,5 +18,6 @@ router.post(
 router.post("/create-folder", dashboardController.addNewFolder);
 
 router.get("/folders/:id", dashboardController.accessFolder);
+router.post("/folders/:id/rename", dashboardController.renameFolder);
 
 module.exports = router;

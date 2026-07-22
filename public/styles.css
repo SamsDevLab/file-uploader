@@ -127,17 +127,18 @@ h2 {
   cursor: pointer;
 }
 
-#create-folder-dialog {
+#create-folder-dialog,
+.folder-dialog {
   background-color: cornflowerblue;
   position: absolute;
-
   transform: translate(575px, 150px);
   min-height: 20%;
   min-width: 30%;
   padding: 1rem;
 }
 
-#create-folder-dialog[open] {
+#create-folder-dialog[open],
+.folder-dialog[open] {
   display: flex;
   flex-direction: column;
   gap: 1rem;

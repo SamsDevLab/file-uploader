@@ -12,7 +12,19 @@
                 <a href="/dashboard/folders/<%= folder.id %>">
                   <h2> <%=folder.name %> </h2>
                 </a>
+                <button onclick="document.getElementById('rename-folder-dialog-<%= folder.id%>').showModal()">Rename</button>
               </div>
+              <dialog class="folder-dialog" id="rename-folder-dialog-<%=folder.id%>">
+                <h3>Rename Folder</h3>
+                <form action="/dashboard/folders/<%= folder.id%>/rename" method="POST">
+                  <div class="dialog-form-field">
+                    <label for="rename">Folder: </label>
+                    <input type="text" id="renameFolder" name="renameFolder" value="<%= folder.name %>">
+                  </div>
+                  <button type="button" onclick="document.getElementById('rename-folder-dialog-<%=folder.id %>').close()">Cancel</button>
+                  <button>Rename</button>
+                </form>
+              </dialog>
           <% }) %>
         <% } %>
       </div>
@@ -38,6 +50,6 @@
           </button>
         </div>
       </form>
-    </dialog>
+    </dialog> 
   </body>
 </html>

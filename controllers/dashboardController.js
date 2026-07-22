@@ -16,4 +16,10 @@ async function accessFolder(req, res) {
   res.render("folder", { folderContents: folderContents });
 }
 
-module.exports = { renderDashboard, addNewFolder, accessFolder };
+async function renameFolder(req, res) {
+  await dashboardModel.renameFolderInDb(req);
+  const folders = await dashboardModel.getAllFolders(req);
+  res.render("dashboard", { folders: folders });
+}
+
+module.exports = { renderDashboard, addNewFolder, accessFolder, renameFolder };

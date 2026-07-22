@@ -37,4 +37,19 @@ async function getFolderContents(req) {
   return folderContents;
 }
 
-module.exports = { getAllFolders, addNewFolderToDb, getFolderContents };
+async function renameFolderInDb(req) {
+  const folderId = Number(req.params.id);
+  const newFolderName = req.body.renameFolder;
+
+  const updatedFolder = await prisma.folder.update({
+    where: { id: folderId },
+    data: { name: newFolderName },
+  });
+}
+
+module.exports = {
+  getAllFolders,
+  addNewFolderToDb,
+  getFolderContents,
+  renameFolderInDb,
+};
