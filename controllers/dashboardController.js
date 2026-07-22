@@ -12,7 +12,7 @@ async function addNewFolder(req, res) {
 }
 
 async function accessFolder(req, res) {
-  const folderContents = await dashboardModel.getCurrentUserFolders(req);
+  const folderContents = await dashboardModel.getFolderContents(req);
   res.render("folder", { folderContents: folderContents });
 }
 

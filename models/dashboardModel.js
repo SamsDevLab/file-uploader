@@ -23,7 +23,7 @@ async function addNewFolderToDb(req) {
   });
 }
 
-async function getCurrentUserFolders(req) {
+async function getFolderContents(req) {
   const folderId = Number(req.params.id);
   const currentUserId = req.user;
 
@@ -37,4 +37,4 @@ async function getCurrentUserFolders(req) {
   return folderContents;
 }
 
-module.exports = { getAllFolders, addNewFolderToDb, getCurrentUserFolders };
+module.exports = { getAllFolders, addNewFolderToDb, getFolderContents };
