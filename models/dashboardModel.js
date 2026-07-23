@@ -1,5 +1,16 @@
 const prisma = require("../lib/prisma");
 
+async function getAllFiles(req) {
+  const userId = req.user;
+  const files = await prisma.file.findMany({
+    where: {
+      authorId: userId,
+    },
+  });
+
+  return files;
+}
+
 async function getAllFolders(req) {
   const userId = req.user;
   const folders = await prisma.folder.findMany({
@@ -70,6 +81,7 @@ async function deleteFolderFromDb(req) {
 }
 
 module.exports = {
+  getAllFiles,
   getAllFolders,
   addFileToDb,
   addNewFolderToDb,
