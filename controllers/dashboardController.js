@@ -6,6 +6,11 @@ async function renderDashboard(req, res) {
   res.render("dashboard", { folders: folders });
 }
 
+async function addFile(req, res) {
+  await dashboardModel.addFileToDb(req);
+  res.redirect("/dashboard");
+}
+
 async function addNewFolder(req, res) {
   await dashboardModel.addNewFolderToDb(req);
   res.redirect("/dashboard");
@@ -30,6 +35,7 @@ async function deleteFolder(req, res) {
 
 module.exports = {
   renderDashboard,
+  addFile,
   addNewFolder,
   accessFolder,
   renameFolder,

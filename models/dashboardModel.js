@@ -11,6 +11,21 @@ async function getAllFolders(req) {
   return folders;
 }
 
+async function addFileToDb(req) {
+  const userId = req.user;
+  const { originalname, mimetype, filename, size } = req.file;
+
+  await prisma.file.create({
+    data: {
+      authorId: userId,
+      originalname: originalname,
+      mimetype: mimetype,
+      filename: filename,
+      size: size,
+    },
+  });
+}
+
 async function addNewFolderToDb(req) {
   const userId = req.user;
   const folderName = req.body.newFolder;
@@ -56,6 +71,7 @@ async function deleteFolderFromDb(req) {
 
 module.exports = {
   getAllFolders,
+  addFileToDb,
   addNewFolderToDb,
   getFolderContents,
   renameFolderInDb,

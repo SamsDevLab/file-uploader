@@ -10,9 +10,7 @@ router.get("/", requireAuth, dashboardController.renderDashboard);
 router.post(
   "/upload-file",
   upload.single("uploadedFile"),
-  function (req, res, next) {
-    console.log(req.file);
-  },
+  dashboardController.addFile,
 );
 
 router.post("/create-folder", dashboardController.addNewFolder);
