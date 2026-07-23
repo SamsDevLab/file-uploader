@@ -80,12 +80,23 @@ async function deleteFolderFromDb(req) {
   });
 }
 
+async function renameFileInDb(req) {
+  const fileId = Number(req.params.id);
+  const newFileName = req.body.renameFile;
+
+  await prisma.file.update({
+    where: { id: fileId },
+    data: { originalname: newFileName },
+  });
+}
+
 module.exports = {
-  getAllFiles,
   getAllFolders,
   addFileToDb,
   addNewFolderToDb,
   getFolderContents,
   renameFolderInDb,
   deleteFolderFromDb,
+  getAllFiles,
+  renameFileInDb,
 };

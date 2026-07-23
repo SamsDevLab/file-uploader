@@ -19,4 +19,6 @@ router.get("/folders/:id", dashboardController.accessFolder);
 router.post("/folders/:id/rename", dashboardController.renameFolder);
 router.post("/folders/:id/delete", dashboardController.deleteFolder);
 
+router.post("/files/:id/rename", dashboardController.renameFile);
+
 module.exports = router;
