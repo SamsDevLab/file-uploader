@@ -20,5 +20,6 @@ router.post("/folders/:id/rename", dashboardController.renameFolder);
 router.post("/folders/:id/delete", dashboardController.deleteFolder);
 
 router.post("/files/:id/rename", dashboardController.renameFile);
+router.post("/files/:id/delete", dashboardController.deleteFile);
 
 module.exports = router;

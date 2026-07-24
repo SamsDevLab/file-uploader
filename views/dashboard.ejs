@@ -35,7 +35,9 @@
               <div class="folder-and-file-container">
                 <h3><%= file.originalname %></h3>
                 <button onclick="document.getElementById('rename-file-dialog-<%= file.id %>').showModal()">Rename</button>
-                <button>Delete</button>
+                <form action="/dashboard/files/<%= file.id %>/delete" method="POST">
+                  <button>Delete</button>
+                </form>
                 <a href="files/<%= file.id %>">View Details</a>
               </div>
               <dialog class="folder-dialog" id="rename-file-dialog-<%=file.id%>">

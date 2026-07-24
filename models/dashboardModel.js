@@ -90,6 +90,15 @@ async function renameFileInDb(req) {
   });
 }
 
+async function deleteFileFromDb(req) {
+  const fileId = Number(req.params.id);
+  const deletedFile = await prisma.file.delete({
+    where: { id: fileId },
+  });
+
+  return deletedFile.filename;
+}
+
 module.exports = {
   getAllFolders,
   addFileToDb,
@@ -99,4 +108,5 @@ module.exports = {
   deleteFolderFromDb,
   getAllFiles,
   renameFileInDb,
+  deleteFileFromDb,
 };
