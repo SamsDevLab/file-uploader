@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("partials/head.ejs") %>
+  <body>
+    <%- include("partials/header.ejs") %>
+    <main id="file-details-container">
+      <section id="file-details-main">
+        <h2>File Details</h2>
+        <div class="file-details-div">
+          <p>Name:</p>
+          <p><%=fileDetails.originalname %></p>
+        </div>
+        <div class="file-details-div">
+          <p>Size:</p>
+          <p><%= fileDetails.size %> bytes</p>
+        </div>
+        <div class="file-details-div">
+          <p>Upload Time:</p>
+          <p><%= fileDetails.createdAt %></p>
+        </div>
+        <div class="file-details-div">
+          <p>Media Type:</p>
+          <p><%= fileDetails.mimetype %></p>
+        </div>
+        <a href="/dashboard/files/<%=fileDetails.filename%>/download"
+          >Download File</a
+        >
+      </section>
+    </main>
+    <%- include("partials/footer.ejs") %>
+  </body>
+</html>

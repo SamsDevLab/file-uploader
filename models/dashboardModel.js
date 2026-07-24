@@ -99,6 +99,16 @@ async function deleteFileFromDb(req) {
   return deletedFile.filename;
 }
 
+async function getFileDetailsFromDb(req) {
+  const fileId = Number(req.params.id);
+
+  const fileDetails = await prisma.file.findUnique({
+    where: { id: fileId },
+  });
+
+  return fileDetails;
+}
+
 module.exports = {
   getAllFolders,
   addFileToDb,
@@ -109,4 +119,5 @@ module.exports = {
   getAllFiles,
   renameFileInDb,
   deleteFileFromDb,
+  getFileDetailsFromDb,
 };

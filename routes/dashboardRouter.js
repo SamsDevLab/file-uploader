@@ -19,6 +19,8 @@ router.get("/folders/:id", dashboardController.accessFolder);
 router.post("/folders/:id/rename", dashboardController.renameFolder);
 router.post("/folders/:id/delete", dashboardController.deleteFolder);
 
+router.get("/files/:id/view-details", dashboardController.viewFileDetails);
+router.get("/files/:id/download", dashboardController.downloadFile);
 router.post("/files/:id/rename", dashboardController.renameFile);
 router.post("/files/:id/delete", dashboardController.deleteFile);
 

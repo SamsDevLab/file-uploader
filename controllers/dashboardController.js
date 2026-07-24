@@ -53,6 +53,20 @@ async function deleteFile(req, res) {
   res.redirect("/dashboard");
 }
 
+async function viewFileDetails(req, res) {
+  const fileDetails = await dashboardModel.getFileDetailsFromDb(req);
+  fileDetails.createdAt = fileDetails.createdAt.toLocaleString();
+
+  res.render("fileDetails", { fileDetails: fileDetails });
+}
+
+async function downloadFile(req, res) {
+  const filename = req.params.id;
+  const filePath = `public/uploads/${filename}`;
+
+  res.download(filePath);
+}
+
 module.exports = {
   renderDashboard,
   addNewFolder,
@@ -62,4 +76,6 @@ module.exports = {
   addFile,
   renameFile,
   deleteFile,
+  viewFileDetails,
+  downloadFile,
 };
