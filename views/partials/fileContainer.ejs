@@ -1,0 +1,37 @@
+<div class="folder-and-file-container">
+  <h3><%= file.originalname %></h3>
+  <button
+    onclick="
+      document.getElementById('rename-file-dialog-<%= file.id %>').showModal()
+    "
+  >
+    Rename
+  </button>
+  <form action="/dashboard/files/<%= file.id %>/delete" method="POST">
+    <button>Delete</button>
+  </form>
+  <a href="/dashboard/files/<%= file.id %>/view-details">View Details</a>
+</div>
+<dialog class="folder-dialog" id="rename-file-dialog-<%=file.id%>">
+  <h3>Rename File</h3>
+  <form action="/dashboard/files/<%= file.id%>/rename" method="POST">
+    <div class="dialog-form-field">
+      <label for="rename">File: </label>
+      <input
+        type="text"
+        id="renameFolder"
+        name="renameFile"
+        value="<%= file.originalname %>"
+      />
+    </div>
+    <button
+      type="button"
+      onclick="
+        document.getElementById('rename-file-dialog-<%=file.id %>').close()
+      "
+    >
+      Cancel
+    </button>
+    <button>Rename</button>
+  </form>
+</dialog>

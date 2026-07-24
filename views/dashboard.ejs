@@ -8,49 +8,12 @@
       <div id="dash-main">
         <% if (folders !== undefined) { %>
           <% folders.forEach(folder => { %>
-              <div class="folder-and-file-container">
-                <a href="/dashboard/folders/<%= folder.id %>">
-                  <h2> <%=folder.name %> </h2>
-                </a>
-                <button onclick="document.getElementById('rename-folder-dialog-<%= folder.id%>').showModal()">Rename</button>
-                <form action="/dashboard/folders/<%= folder.id %>/delete" method="POST">
-                  <button>Delete</button>
-                </form>
-              </div>
-              <dialog class="folder-dialog" id="rename-folder-dialog-<%=folder.id%>">
-                <h3>Rename Folder</h3>
-                <form action="/dashboard/folders/<%= folder.id%>/rename" method="POST">
-                  <div class="dialog-form-field">
-                    <label for="renameFolder">Folder: </label>
-                    <input type="text" id="renameFolder" name="renameFolder" value="<%= folder.name %>">
-                  </div>
-                  <button type="button" onclick="document.getElementById('rename-folder-dialog-<%=folder.id %>').close()">Cancel</button>
-                  <button>Rename</button>
-                </form>
-              </dialog>
+            <%- include("partials/folderContainer.ejs", {folder}) %>
           <% }) %>
         <% } %>
-         <% if (files !== undefined) { %>
+        <% if (files !== undefined) { %>
             <% files.forEach(file => { %>
-              <div class="folder-and-file-container">
-                <h3><%= file.originalname %></h3>
-                <button onclick="document.getElementById('rename-file-dialog-<%= file.id %>').showModal()">Rename</button>
-                <form action="/dashboard/files/<%= file.id %>/delete" method="POST">
-                  <button>Delete</button>
-                </form>
-                <a href="/dashboard/files/<%= file.id %>/view-details">View Details</a>
-              </div>
-              <dialog class="folder-dialog" id="rename-file-dialog-<%=file.id%>">
-                <h3>Rename File</h3>
-                <form action="/dashboard/files/<%= file.id%>/rename" method="POST">
-                  <div class="dialog-form-field">
-                    <label for="rename">File: </label>
-                    <input type="text" id="renameFolder" name="renameFile" value="<%= file.originalname %>">
-                  </div>
-                  <button type="button" onclick="document.getElementById('rename-file-dialog-<%=file.id %>').close()">Cancel</button>
-                  <button>Rename</button>
-                </form>
-              </dialog>
+              <%- include("partials/fileContainer.ejs", {file}) %>
             <% }) %>
          <% } %>
       </div>
