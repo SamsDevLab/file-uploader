@@ -4,7 +4,7 @@
   <body>
     <%- include("partials/header.ejs") %>
     <main class="dashboard">
-      <%- include("partials/sidebar.ejs") %>
+      <%- include("partials/sidebar.ejs", {folderId}) %>
       <div id="dash-main">
         <% if (folders !== undefined) { %>
           <% folders.forEach(folder => { %>
