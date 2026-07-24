@@ -2,7 +2,24 @@
   <div class="dropdown">
     <button>+ New</button>
     <div class="dropdown-content">
-      <form
+      <% if (folderId !== null) { %>
+        <form
+        action="/dashboard/upload-file/folder/<%= folderId %>"
+        enctype="multipart/form-data"
+        method="POST"
+      >
+        <label for="file-upload">
+          <input
+            type="file"
+            class="form-control-file"
+            name="uploadedFile"
+            id="file-upload"
+          />
+        </label>
+        <button>Submit</button>
+      </form>
+      <% } else { %>
+        <form
         action="/dashboard/upload-file"
         enctype="multipart/form-data"
         method="POST"
@@ -17,6 +34,9 @@
         </label>
         <button>Submit</button>
       </form>
+      <% } %>
+      
+
       <button
         onclick="document.getElementById('create-folder-dialog').showModal()"
       >
