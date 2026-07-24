@@ -1,10 +1,11 @@
 const prisma = require("../lib/prisma");
 
-async function getAllFiles(req) {
+async function getAllDashboardFiles(req) {
   const userId = req.user;
   const files = await prisma.file.findMany({
     where: {
       authorId: userId,
+      folderId: null,
     },
   });
 
@@ -24,6 +25,7 @@ async function getAllFolders(req) {
 
 async function addFileToDb(req) {
   const userId = req.user;
+
   const { originalname, mimetype, filename, size } = req.file;
 
   await prisma.file.create({
@@ -33,6 +35,24 @@ async function addFileToDb(req) {
       mimetype: mimetype,
       filename: filename,
       size: size,
+    },
+  });
+}
+
+async function addFileToFolderAndDb(req) {
+  const folderId = Number(req.params.id);
+  const userId = req.user;
+
+  const { originalname, mimetype, filename, size } = req.file;
+
+  await prisma.file.create({
+    data: {
+      authorId: userId,
+      originalname: originalname,
+      mimetype: mimetype,
+      filename: filename,
+      size: size,
+      folderId: folderId,
     },
   });
 }
@@ -60,7 +80,16 @@ async function getFolderContents(req) {
     },
   });
 
-  return folderContents;
+  const files = await prisma.file.findMany({
+    where: {
+      authorId: folderContents.authorId,
+      folderId: folderContents.id,
+    },
+  });
+
+  const folderNameAndFiles = { folderName: folderContents.name, files: files };
+
+  return folderNameAndFiles;
 }
 
 async function renameFolderInDb(req) {
@@ -112,11 +141,12 @@ async function getFileDetailsFromDb(req) {
 module.exports = {
   getAllFolders,
   addFileToDb,
+  addFileToFolderAndDb,
   addNewFolderToDb,
   getFolderContents,
   renameFolderInDb,
   deleteFolderFromDb,
-  getAllFiles,
+  getAllDashboardFiles,
   renameFileInDb,
   deleteFileFromDb,
   getFileDetailsFromDb,

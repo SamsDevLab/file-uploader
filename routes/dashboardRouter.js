@@ -13,9 +13,15 @@ router.post(
   dashboardController.addFile,
 );
 
+router.post(
+  "/upload-file/folder/:id",
+  upload.single("uploadedFile"),
+  dashboardController.addFileToFolder,
+);
+
 router.post("/create-folder", dashboardController.addNewFolder);
 
-router.get("/folders/:id", dashboardController.accessFolder);
+router.get("/folders/:id", dashboardController.renderFolder);
 router.post("/folders/:id/rename", dashboardController.renameFolder);
 router.post("/folders/:id/delete", dashboardController.deleteFolder);
 

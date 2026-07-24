@@ -3,9 +3,13 @@ const dashboardModel = require("../models/dashboardModel");
 const fs = require("fs/promises");
 
 async function renderDashboard(req, res) {
-  const files = await dashboardModel.getAllFiles(req);
+  const files = await dashboardModel.getAllDashboardFiles(req);
   const folders = await dashboardModel.getAllFolders(req);
-  res.render("dashboard", { folders: folders, files: files });
+  res.render("dashboard", {
+    folderId: null,
+    folders: folders,
+    files: files,
+  });
 }
 
 async function addNewFolder(req, res) {
@@ -13,9 +17,10 @@ async function addNewFolder(req, res) {
   res.redirect("/dashboard");
 }
 
-async function accessFolder(req, res) {
+async function renderFolder(req, res) {
+  const folderId = req.params.id;
   const folderContents = await dashboardModel.getFolderContents(req);
-  res.render("folder", { folderContents: folderContents });
+  res.render("folder", { folderId: folderId, folderContents: folderContents });
 }
 
 async function renameFolder(req, res) {
@@ -33,6 +38,12 @@ async function deleteFolder(req, res) {
 async function addFile(req, res) {
   await dashboardModel.addFileToDb(req);
   res.redirect("/dashboard");
+}
+
+async function addFileToFolder(req, res) {
+  await dashboardModel.addFileToFolderAndDb(req);
+  const folderId = Number(req.params.id);
+  res.redirect(`/dashboard/folders/${folderId}`);
 }
 
 async function renameFile(req, res) {
@@ -70,10 +81,11 @@ async function downloadFile(req, res) {
 module.exports = {
   renderDashboard,
   addNewFolder,
-  accessFolder,
+  renderFolder,
   renameFolder,
   deleteFolder,
   addFile,
+  addFileToFolder,
   renameFile,
   deleteFile,
   viewFileDetails,
