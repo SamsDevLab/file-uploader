@@ -8,6 +8,11 @@
     Rename
   </button>
   <form action="/dashboard/files/<%= file.id %>/delete" method="POST">
+      <% if (folderId === null){ %>
+        <input type="hidden" name="folderId" value="" />
+      <% } else { %>
+        <input type="hidden" name="folderId" value="<%= folderId %>">
+      <% } %>
     <button>Delete</button>
   </form>
   <a href="/dashboard/files/<%= file.id %>/view-details">View Details</a>
@@ -16,10 +21,15 @@
   <h3>Rename File</h3>
   <form action="/dashboard/files/<%= file.id%>/rename" method="POST">
     <div class="dialog-form-field">
-      <label for="rename">File: </label>
+      <% if (folderId === null){ %>
+        <input type="hidden" name="folderId" value="" />
+      <% } else { %>
+        <input type="hidden" name="folderId" value="<%= folderId %>">
+      <% } %>
+      <label for="renameFile">File: </label>
       <input
         type="text"
-        id="renameFolder"
+        id="renameFile"
         name="renameFile"
         value="<%= file.originalname %>"
       />

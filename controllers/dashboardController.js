@@ -48,10 +48,16 @@ async function addFileToFolder(req, res) {
 
 async function renameFile(req, res) {
   await dashboardModel.renameFileInDb(req);
-  res.redirect("/dashboard");
+  const folderId = req.body.folderId || null;
+
+  if (folderId !== null) {
+    res.redirect(`/dashboard/folders/${folderId}`);
+  } else res.redirect("/dashboard/");
 }
 
 async function deleteFile(req, res) {
+  const folderId = req.body.folderId || null;
+
   const deletedFilename = await dashboardModel.deleteFileFromDb(req);
 
   try {
@@ -61,7 +67,9 @@ async function deleteFile(req, res) {
     console.error("Error deleting file:", err.message);
   }
 
-  res.redirect("/dashboard");
+  if (folderId !== null) {
+    res.redirect(`/dashboard/folders/${folderId}`);
+  } else res.redirect("/dashboard/");
 }
 
 async function viewFileDetails(req, res) {

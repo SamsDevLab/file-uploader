@@ -4,10 +4,15 @@
   <body>
     <%- include("partials/header.ejs") %>
     <main class="dashboard">
-        <%- include("partials/sidebar.ejs") %>
+        <%- include("partials/sidebar.ejs", {folderId}) %>
+        <div class="dash-main">
         <% if (folderContents !== undefined) { %>
-            <h2><%= folderContents.name %></h2>
+            <h2 class="folder-name"><%= folderContents.folderName %></h2>
+           <% folderContents.files.forEach(file => { %>
+              <%- include("partials/fileContainer.ejs", {folderId, file}) %>
+           <% }) %>
         <% } %>
+        </div>
     </main>
     <%- include("partials/footer.ejs") %>
   </body>
