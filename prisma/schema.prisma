@@ -34,7 +34,7 @@ model File {
   authorId      Int
   originalname  String
   mimetype      String
-  filename      String
+  filePath      String
   size          Int
   createdAt     DateTime @default(now())
   folder        Folder?  @relation(fields: [folderId], references: [id])
