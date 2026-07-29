@@ -1,10 +1,10 @@
 const prisma = require("../lib/prisma");
 const dashboardModel = require("../models/dashboardModel");
-const fs = require("fs/promises");
 
 async function renderDashboard(req, res) {
   const files = await dashboardModel.getAllDashboardFiles(req);
   const folders = await dashboardModel.getAllFolders(req);
+
   res.render("dashboard", {
     folderId: null,
     folders: folders,
@@ -57,15 +57,7 @@ async function renameFile(req, res) {
 
 async function deleteFile(req, res) {
   const folderId = req.body.folderId || null;
-
   const deletedFilename = await dashboardModel.deleteFileFromDb(req);
-
-  try {
-    await fs.unlink(`public/uploads/${deletedFilename}`);
-    console.log("File successfully deleted");
-  } catch (err) {
-    console.error("Error deleting file:", err.message);
-  }
 
   if (folderId !== null) {
     res.redirect(`/dashboard/folders/${folderId}`);
