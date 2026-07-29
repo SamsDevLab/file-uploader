@@ -6,12 +6,12 @@
     <main class="dashboard">
       <%- include("partials/sidebar.ejs", {folderId}) %>
       <div class="dash-main">
-        <% if (folders !== undefined) { %>
+        <% if (folders !== null) { %>
           <% folders.forEach(folder => { %>
             <%- include("partials/folderContainer.ejs", {folder}) %>
           <% }) %>
         <% } %>
-        <% if (files !== undefined) { %>
+        <% if (files !== null) { %>
             <% files.forEach(file => { %>
               <%- include("partials/fileContainer.ejs", {folderId, file}) %>
             <% }) %>
