@@ -17,11 +17,15 @@ router.post(
   async function uploadFile(req, res) {
     const { data, error } = await supabase.storage
       .from("uploads")
-      .upload(req.filePath, req.file);
+      .upload(req.file.filePath, req.file.buffer, {
+        contentType: req.file.mimetype,
+        upsert: false,
+      });
     if (error) {
-      console.error(error);
+      // Needs to be addressed!
+      const errorMsg = await error;
+      next(error);
     } else {
-      req.file.filePath = data.path;
       dashboardController.addFile(req, res);
     }
   },
@@ -34,11 +38,15 @@ router.post(
   async function uploadFile(req, res) {
     const { data, error } = await supabase.storage
       .from("uploads")
-      .upload(req.filePath, req.file);
+      .upload(req.file.filePath, req.file.buffer, {
+        contentType: req.file.mimetype,
+        upsert: false,
+      });
     if (error) {
-      console.error(error);
+      // Needs to be addressed!
+      const errorMsg = await error;
+      next(error);
     } else {
-      req.file.filePath = data.path;
       dashboardController.addFileToFolder(req, res);
     }
   },
