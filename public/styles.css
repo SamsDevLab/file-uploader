@@ -181,7 +181,7 @@ h2 {
 }
 
 /*** Main ***/
-#dash-main {
+.dash-main {
   padding: 1rem;
   grid-column: 2;
   display: grid;
@@ -190,11 +190,35 @@ h2 {
   gap: 1rem;
 }
 
-.folder {
+.folder-and-file-container {
   border: 1px solid cornflowerblue;
 }
 
-.folder:hover {
+.folder-and-file-container:hover {
   cursor: pointer;
   background-color: lightgray;
+}
+
+/*********************/
+/*** File Details ***/
+/*******************/
+
+#file-details-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+#file-details-main {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  min-width: 30%;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.file-details-div {
+  display: flex;
+  justify-content: space-between;
 }
