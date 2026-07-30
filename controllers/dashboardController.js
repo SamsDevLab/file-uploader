@@ -72,10 +72,8 @@ async function viewFileDetails(req, res) {
 }
 
 async function downloadFile(req, res) {
-  const filename = req.params.id;
-  const filePath = `public/uploads/${filename}`;
-
-  res.download(filePath);
+  const file = await dashboardModel.downloadFileFromStorage(req);
+  res.redirect(file);
 }
 
 module.exports = {

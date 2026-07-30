@@ -1,4 +1,7 @@
 const prisma = require("../lib/prisma");
+const supabase = require("../config/supabase");
+const fs = require("fs/promises");
+const path = require("node:path");
 
 async function getAllDashboardFiles(req) {
   const userId = req.user;
@@ -141,6 +144,25 @@ async function getFileDetailsFromDb(req) {
   return fileDetails;
 }
 
+async function downloadFileFromStorage(req) {
+  const fileId = Number(req.params.id);
+  const fileDetails = await prisma.file.findUnique({
+    where: { id: fileId },
+  });
+
+  const { data, error } = await supabase.storage
+    .from("uploads")
+    .createSignedUrl(`${fileDetails.filePath}`, 60, {
+      download: fileDetails.originalname,
+    });
+
+  if (error) {
+    console.error(error);
+  } else {
+    return data.signedUrl;
+  }
+}
+
 module.exports = {
   getAllFolders,
   addFileToDb,
@@ -153,4 +175,5 @@ module.exports = {
   renameFileInDb,
   deleteFileFromDb,
   getFileDetailsFromDb,
+  downloadFileFromStorage,
 };
