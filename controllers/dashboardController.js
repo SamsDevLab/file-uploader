@@ -57,7 +57,7 @@ async function renameFile(req, res) {
 
 async function deleteFile(req, res) {
   const folderId = req.body.folderId || null;
-  await dashboardModel.deleteFileFromDb(req);
+  await dashboardModel.deleteFileFromStorageAndDb(req);
 
   if (folderId !== null) {
     res.redirect(`/dashboard/folders/${folderId}`);

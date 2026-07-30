@@ -127,9 +127,21 @@ async function renameFileInDb(req) {
   });
 }
 
-async function deleteFileFromDb(req) {
+async function deleteFileFromStorageAndDb(req) {
   const fileId = Number(req.params.id);
-  const deletedFile = await prisma.file.delete({
+
+  const fileToDelete = await prisma.file.findUnique({
+    where: { id: fileId },
+  });
+
+  const { data, error } = await supabase.storage
+    .from("uploads")
+    .remove([fileToDelete.filePath]);
+  if (error) {
+    console.error(error);
+  } else console.log("File deleted successfully!");
+
+  await prisma.file.delete({
     where: { id: fileId },
   });
 }
@@ -173,7 +185,7 @@ module.exports = {
   deleteFolderFromDb,
   getAllDashboardFiles,
   renameFileInDb,
-  deleteFileFromDb,
+  deleteFileFromStorageAndDb,
   getFileDetailsFromDb,
   downloadFileFromStorage,
 };
