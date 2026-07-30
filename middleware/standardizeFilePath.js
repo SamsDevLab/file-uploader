@@ -5,13 +5,13 @@ const standardizeFilePath = (req, res, next) => {
 
   const ext = fileData.originalname.split(".").pop();
 
-  if (folderId == undefined) {
-    const filePath = `users/${userId}/dashboard/${crypto.randomUUID()}.${ext}`;
-    req.filePath = filePath;
+  if (folderId === undefined) {
+    const filePath = `uploads/users/${userId}/dashboard/${crypto.randomUUID()}.${ext}`;
+    req.file.filePath = filePath;
     next();
   } else {
-    const filePath = `users/${userId}/folders/${folderId}/${crypto.randomUUID()}.${ext}`;
-    req.filePath = filePath;
+    const filePath = `uploads/users/${userId}/folders/${folderId}/${crypto.randomUUID()}.${ext}`;
+    req.file.filePath = filePath;
     next();
   }
 };
