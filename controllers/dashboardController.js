@@ -26,7 +26,8 @@ async function renderFolder(req, res) {
 async function renameFolder(req, res) {
   await dashboardModel.renameFolderInDb(req);
   const folders = await dashboardModel.getAllFolders(req);
-  res.render("dashboard", { folders: folders });
+  const files = await dashboardModel.getAllDashboardFiles(req);
+  res.render("dashboard", { folderId: null, folders: folders, files: files });
 }
 
 async function deleteFolder(req, res) {
