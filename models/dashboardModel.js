@@ -112,6 +112,14 @@ async function renameFolderInDb(req) {
 
 async function deleteFolderFromDb(req) {
   const folderId = Number(req.params.id);
+
+  const targetedFolderFiles = await prisma.file.findMany({
+    where: { folderId: folderId },
+  });
+
+  const filesToRemove = targetedFolderFiles.map((file) => file.filePath);
+  const response = await supabase.storage.from("uploads").remove(filesToRemove);
+
   await prisma.folder.delete({
     where: { id: folderId },
   });
