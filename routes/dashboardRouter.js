@@ -19,31 +19,28 @@ router.post(
   "/upload-file",
   upload.single("uploadedFile"),
   validateFileUpload,
-  // standardizeFilePath,
-  // async function uploadFile(req, res, next) {
-  //   const { data, error } = await supabase.storage
-  //     .from("uploads")
-  //     .upload(req.file.filePath, req.file.buffer, {
-  //       contentType: req.file.mimetype,
-  //       upsert: false,
-  //     });
-  //   if (error) {
-  //     // res.end();
-  //     // const statusCode = Number(error.statusCode);
-  //     // const errors = { statusCode: statusCode, errors: error.message };
-  //     // req.file.error = errors;
-
-  //     return res.status(400).json({ error: `${error.message}` });
-  //   } else {
-  //     await dashboardController.addFile(req, res);
-  //   }
-  //   // return res.redirect("/dashboard");
-  // },
+  standardizeFilePath,
+  async function uploadFile(req, res, next) {
+    const { data, error } = await supabase.storage
+      .from("uploads")
+      .upload(req.file.filePath, req.file.buffer, {
+        contentType: req.file.mimetype,
+        upsert: false,
+      });
+    if (error) {
+      return res
+        .status(Number(error.statusCode))
+        .json({ error: `${error.message}` });
+    } else {
+      await dashboardController.addFile(req, res);
+    }
+  },
 );
 
 router.post(
   "/upload-file/folder/:id",
   upload.single("uploadedFile"),
+  validateFileUpload,
   standardizeFilePath,
   async function uploadFile(req, res) {
     const { data, error } = await supabase.storage
@@ -53,10 +50,11 @@ router.post(
         upsert: false,
       });
     if (error) {
-      // Needs to be addressed!
-      console.error(error);
+      return res
+        .status(Number(error.statusCode))
+        .json({ error: `${error.message}` });
     } else {
-      dashboardController.addFileToFolder(req, res);
+      await dashboardController.addFileToFolder(req, res);
     }
   },
 );
