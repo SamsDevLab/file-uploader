@@ -5,11 +5,8 @@ async function renderDashboard(req, res) {
   const files = await dashboardModel.getAllDashboardFiles(req);
   const folders = await dashboardModel.getAllFolders(req);
 
-  const errorMessage = req.session.message || null;
-  const statusCode = req.session.statusCode || null;
-
-  delete req.session.message;
-  delete req.session.statusCode;
+  const statusCode = await req.flash("statusCode")[0];
+  const errorMessage = (await req.flash("errorMessage")[0]) || null;
 
   res.status(statusCode || 200).render("dashboard", {
     folderId: null,
@@ -27,7 +24,15 @@ async function addNewFolder(req, res) {
 async function renderFolder(req, res) {
   const folderId = req.params.id;
   const folderContents = await dashboardModel.getFolderContents(req);
-  res.render("folder", { folderId: folderId, folderContents: folderContents });
+
+  const statusCode = await req.flash("statusCode")[0];
+  const errorMessage = (await req.flash("errorMessage")[0]) || null;
+
+  res.status(statusCode || 200).render("folder", {
+    folderId: folderId,
+    folderContents: folderContents,
+    errorMessage,
+  });
 }
 
 async function renameFolder(req, res) {

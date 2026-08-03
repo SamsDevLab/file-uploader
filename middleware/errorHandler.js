@@ -14,12 +14,25 @@ function errorHandler(err, req, res, next) {
   } else next(err);
 }
 
-function handleUploadError(err, req, res, next) {
+async function handleUploadError(err, req, res, next) {
   if (err.statusCode === 413 || err.statusCode === 415) {
-    req.session.statusCode = err.statusCode;
-    req.session.message = err.message;
+    await req.flash("statusCode", err.statusCode);
+    await req.flash("errorMessage", err.message);
 
-    res.redirect("/dashboard");
+    if (err.folder !== null) {
+      req.session.save((error) => {
+        if (error) {
+          return next(error);
+        }
+        res.redirect(`/dashboard/folders/${err.folderId}`);
+      });
+    } else
+      req.session.save((error) => {
+        if (error) {
+          return next(error);
+        }
+        res.redirect("/dashboard");
+      });
   } else return next();
 }
 
