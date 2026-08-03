@@ -5,10 +5,17 @@ async function renderDashboard(req, res) {
   const files = await dashboardModel.getAllDashboardFiles(req);
   const folders = await dashboardModel.getAllFolders(req);
 
-  res.render("dashboard", {
+  const errorMessage = req.session.message || null;
+  const statusCode = req.session.statusCode || null;
+
+  delete req.session.message;
+  delete req.session.statusCode;
+
+  res.status(statusCode || 200).render("dashboard", {
     folderId: null,
     folders: folders,
     files: files,
+    errorMessage,
   });
 }
 

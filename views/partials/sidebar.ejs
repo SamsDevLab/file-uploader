@@ -2,6 +2,9 @@
   <div class="dropdown">
     <button>+ New</button>
     <div class="dropdown-content">
+      <% if (errorMessage !== null) { %>
+        <p><%= errorMessage %></p>
+     <% } %>
       <% if (folderId !== null) { %>
         <form
         action="/dashboard/upload-file/folder/<%= folderId %>"
