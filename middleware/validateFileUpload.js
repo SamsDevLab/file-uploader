@@ -1,8 +1,14 @@
 const validateFileUpload = (req, res, next) => {
   const fileSizeLimit = 6 * 1024 * 1024;
 
+  const folderId = Number(req.params.id) || null;
+
   if (req.file.size > fileSizeLimit) {
-    return next({ statusCode: 413, message: "File must be 6MB or smaller" });
+    return next({
+      statusCode: 413,
+      message: "File must be 6MB or smaller",
+      folderId,
+    });
   }
 
   const acceptedMimetypes = [
@@ -21,6 +27,7 @@ const validateFileUpload = (req, res, next) => {
     return next({
       statusCode: 415,
       message: "This file type is not supported",
+      folderId,
     });
   }
 
