@@ -5,26 +5,26 @@ const validateFileUpload = (req, res, next) => {
     return next({ statusCode: 413, message: "File must be 6MB or smaller" });
   }
 
-  // if (req.file.size > fileSizeLimit) {
-  //   // req.file.error = sizeLimitErr;
-  //   next(fileSizeError);
-  // } else console.log("File is acceptable size");
+  const acceptedMimetypes = [
+    "image/jpeg",
+    "image/png",
+    "image/gif",
+    "image/webp",
+    "application/pdf",
+    "text/plain",
+    "application/zip",
+    "application/msword",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  ];
 
-  //   const allowedMimetypes = [
-  //     "image/jpeg",
-  //     "image/png",
-  //     "image/gif",
-  //     "image/webp",
-  //     "application/pdf",
-  //     "text/plain",
-  //     "application/zip",
-  //     "application/msword",
-  //     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-  //   ];
+  if (!acceptedMimetypes.includes(req.file.mimetype)) {
+    return next({
+      statusCode: 415,
+      message: "This file type is not supported",
+    });
+  }
 
-  //   if (allowedMimetypes.includes(req.file.mimetype)) {
-  //     next();
-  //   } else console.log("It ain't here, bruh!");
+  return next();
 };
 
 module.exports = validateFileUpload;

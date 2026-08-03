@@ -11,18 +11,16 @@ function errorHandler(err, req, res, next) {
         messages: errorMessages,
       },
     });
-  } else {
-    next(err);
-  }
+  } else next(err);
 }
 
-function sizeLimitErrorHandler(err, req, res, next) {
-  if (err.statusCode === 413) {
+function handleUploadError(err, req, res, next) {
+  if (err.statusCode === 413 || err.statusCode === 415) {
     req.session.statusCode = err.statusCode;
     req.session.message = err.message;
 
     res.redirect("/dashboard");
-  }
+  } else return next();
 }
 
-module.exports = [errorHandler, sizeLimitErrorHandler];
+module.exports = [errorHandler, handleUploadError];
