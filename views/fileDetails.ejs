@@ -25,6 +25,11 @@
         <a href="/dashboard/files/<%=fileDetails.id%>/download"
           >Download File</a
         >
+        <% if (folderId !== null) { %>
+          <a href="/dashboard/folders/<%= folderId %>">Back</a>
+        <% } else { %>
+          <a href="/dashboard">Back</a>
+        <% } %>
       </section>
     </main>
     <%- include("partials/footer.ejs") %>

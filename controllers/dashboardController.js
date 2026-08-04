@@ -83,7 +83,9 @@ async function viewFileDetails(req, res) {
   const fileDetails = await dashboardModel.getFileDetailsFromDb(req);
   fileDetails.createdAt = fileDetails.createdAt.toLocaleString();
 
-  res.render("fileDetails", { fileDetails: fileDetails });
+  const folderId = fileDetails.folderId || null;
+
+  res.render("fileDetails", { fileDetails: fileDetails, folderId: folderId });
 }
 
 async function downloadFile(req, res) {
