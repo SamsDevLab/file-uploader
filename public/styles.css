@@ -47,7 +47,9 @@ select {
   font: inherit;
 }
 
+/******************/
 /* Project Below */
+/****************/
 
 @font-face {
   font-family: "Inter";
@@ -62,6 +64,10 @@ select {
     url("./fonts/JetBrainsMono-Regular.woff2") format("woff2"),
     url("./fonts/JetBrainsMono-Regular.woff") format("woff");
 }
+
+/**********************/
+/*** Global Styles ***/
+/********************/
 
 header,
 footer {
@@ -135,17 +141,49 @@ h2 {
   font-family: "JetBrainsMono";
 }
 
+/******************************/
+/*** Login / Sign Up Forms ***/
+/****************************/
+
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 1.25rem;
+  margin-top: 4rem;
+  font-family: "Inter";
 }
 
 .auth-form-field {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.form-actions a,
+.form-actions button {
+  text-decoration: none;
+  font-family: "Inter";
+  background-color: #00f5d4;
+  color: #0b132b;
+  padding: 0.6rem;
+  border-radius: 0.2rem;
+  flex: 1;
+}
+
+.form-actions a:hover,
+.form-actions button:hover {
+  background-color: #00d6b9;
+  cursor: pointer;
+}
+
+.form-actions button {
+  border: none;
 }
 
 /***********************/
