@@ -1,8 +1,6 @@
-function errorHandler(err, req, res, next) {
-  // change the name of this when done with the others - this will be handleFormErrors or something like that
-
+function handleAuthenticationError(err, req, res, next) {
   if (err.statusCode === 400) {
-    const statusCode = err.statusCode || 500; // 400 status code
+    const statusCode = err.statusCode || 500;
     const errorMessages = err.errors;
     res.status(statusCode).json({
       success: false,
@@ -36,4 +34,4 @@ async function handleUploadError(err, req, res, next) {
   } else return next();
 }
 
-module.exports = [errorHandler, handleUploadError];
+module.exports = [handleAuthenticationError, handleUploadError];
