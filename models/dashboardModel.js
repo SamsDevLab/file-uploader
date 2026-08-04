@@ -11,6 +11,9 @@ async function getAllDashboardFiles(req) {
       authorId: userId,
       folderId: null,
     },
+    orderBy: {
+      originalname: "asc",
+    },
   });
 
   if (files.length === 0) {
@@ -23,6 +26,9 @@ async function getAllFolders(req) {
   const folders = await prisma.folder.findMany({
     where: {
       authorId: userId,
+    },
+    orderBy: {
+      name: "asc",
     },
   });
 
@@ -92,6 +98,9 @@ async function getFolderContents(req) {
     where: {
       authorId: folderContents.authorId,
       folderId: folderContents.id,
+    },
+    orderBy: {
+      originalname: "asc",
     },
   });
 
