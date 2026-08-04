@@ -49,9 +49,23 @@ select {
 
 /* Project Below */
 
+@font-face {
+  font-family: "Inter";
+  src:
+    url("./fonts/Inter18pt-Regular.woff2") format("woff2"),
+    url("./fonts/JetBrainsMono-Regular.woff2") format("woff");
+}
+
+@font-face {
+  font-family: "JetBrainsMono";
+  src:
+    url("./fonts/JetBrainsMono-Regular.woff2") format("woff2"),
+    url("./fonts/JetBrainsMono-Regular.woff") format("woff");
+}
+
 header,
 footer {
-  background-color: #ff8559;
+  background-color: #0b132b;
   min-width: 100%;
   padding: 1rem;
   display: flex;
@@ -71,21 +85,23 @@ header {
 
 .auth-container a {
   text-decoration: none;
-  background-color: whitesmoke;
-  padding: 0.4rem;
+  font-family: "Inter";
+  background-color: #00f5d4;
+  color: #0b132b;
+  padding: 0.6rem;
   border-radius: 0.2rem;
 }
 
 .auth-container a:hover {
-  background-color: lightgray;
+  background-color: #00d6b9;
 }
 
 footer {
   justify-content: center;
+  color: #00f5d4;
 }
 
 body {
-  background-color: seagreen;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,10 +109,10 @@ body {
 
 main {
   flex: 1;
-  display: grid;
+  display: flex;
+  justify-content: center;
   min-width: 100%;
-  grid-template-columns: 2fr 2fr;
-  background-color: beige;
+  background-color: #f4f6f8;
 }
 
 h1 {
@@ -105,14 +121,18 @@ h1 {
 
 h1 a {
   text-decoration: none;
+  color: #00f5d4;
+  font-family: "JetBrainsMono";
 }
 
 h1 a:hover {
   cursor: pointer;
+  color: #00d6b9;
 }
 
 h2 {
   font-size: 1.25rem;
+  font-family: "JetBrainsMono";
 }
 
 .auth-form {
@@ -126,6 +146,67 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+}
+
+/***********************/
+/*** Hero Container ***/
+/***********************/
+
+#hero-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#hero-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 10rem;
+  gap: 1rem;
+  align-items: start;
+}
+
+#hero-information h2 {
+  font-size: 2rem;
+  color: #0b132b;
+}
+
+#hero-information h3 {
+  font-size: 4rem;
+  font-family: "Inter";
+  color: #0b132b;
+}
+
+#hero-auth-container {
+  display: flex;
+  gap: 1rem;
+  font-family: "Inter";
+}
+
+#hero-auth-container a {
+  text-decoration: none;
+  background-color: #00f5d4;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  color: #0b132b;
+}
+
+#hero-auth-container a:hover {
+  background-color: #00d6b9;
+}
+
+#hero-img-container {
+  padding: 5rem;
+  justify-self: center;
+  align-self: center;
+}
+
+#hero-img-container img {
+  border-radius: 0.3rem;
+  max-height: 65%;
+  max-width: 65%;
+  min-height: 65%;
+  min-width: 65%;
 }
 
 /******************/

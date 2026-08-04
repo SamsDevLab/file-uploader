@@ -3,11 +3,21 @@
   <%- include("partials/head")%>
   <body>
     <%- include("partials/header") %>
-    <main>
-      <section>
-        <h2>Try out the File Vault!</h2>
-        <a href="/auth/login">Log In</a>
-        <a href="/auth/signup">Sign Up</a>
+    <main id="hero-container">
+      <section id="hero-information">
+        <h2>Online File Vault</h2>
+        <h3>Store Files Online</h3>
+        <div id="hero-auth-container">
+          <a href="/auth/login">Log In</a>
+          <a href="/auth/signup">Sign Up</a>
+        </div>
+      </section>
+      <section id="hero-img-container">
+        <img
+          id="splash-page-pic"
+          src="/images/IMG_9308.jpeg"
+          alt="Rubber Duck Debugging"
+        />
       </section>
     </main>
     <%- include("partials/footer") %>
