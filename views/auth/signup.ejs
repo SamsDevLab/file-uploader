@@ -8,11 +8,17 @@
         <h2>Sign Up</h2>
         <div class="auth-form-field">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" />
+          <input type="email" id="email" name="email" required />
         </div>
         <div class="auth-form-field">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            minlength="8"
+          />
         </div>
         <div class="auth-form-field">
           <label for="confirmPassword">Confirm Password</label>
@@ -20,6 +26,7 @@
             type="password"
             id="confirmPassword"
             name="passwordConfirmation"
+            required
           />
         </div>
         <div>
