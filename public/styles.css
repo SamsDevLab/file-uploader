@@ -177,22 +177,8 @@ h2 {
   color: #0b132b;
 }
 
-#hero-auth-container {
-  display: flex;
-  gap: 1rem;
-  font-family: "Inter";
-}
-
-#hero-auth-container a {
-  text-decoration: none;
-  background-color: #00f5d4;
+#hero-information a {
   padding: 1rem;
-  border-radius: 0.4rem;
-  color: #0b132b;
-}
-
-#hero-auth-container a:hover {
-  background-color: #00d6b9;
 }
 
 #hero-img-container {
