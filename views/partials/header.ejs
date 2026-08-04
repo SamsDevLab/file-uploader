@@ -1,6 +1,9 @@
 <header>
-  <h1><a href="/">File Uploader App</a></h1>
-
+  <% if (currentUser === null) { %>
+    <h1><a href="/">File Uploader App</a></h1>
+  <% } else { %>
+    <h1><a href="/dashboard">File Uploader App</a></h1>
+  <% } %>
   <div>
     <% if (currentUser === null) { %>
     <a href="/auth/login">Log In</a>
