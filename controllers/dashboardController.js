@@ -47,7 +47,7 @@ async function deleteFolder(req, res) {
   const folders = await dashboardModel.getAllFolders(req);
   const files = await dashboardModel.getAllDashboardFiles(req);
 
-  res.render("dashboard", { folderId: null, folders: folders, files: files });
+  res.redirect("/dashboard");
 }
 
 async function addFile(req, res) {
