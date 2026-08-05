@@ -321,6 +321,10 @@ h2 {
   gap: 1rem;
 }
 
+/***********************/
+/*** Folder Details ***/
+/*********************/
+
 .folder-and-file-container {
   border: 1px solid #0b132b;
   display: flex;
@@ -380,13 +384,13 @@ h2 {
 /*** File Details ***/
 /*******************/
 
-#file-details-container {
+.file-details-container {
   display: flex;
   justify-content: center;
   padding: 1rem;
 }
 
-#file-details-main {
+.file-details-main {
   background-color: white;
   display: flex;
   flex-direction: column;
