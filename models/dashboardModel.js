@@ -126,8 +126,12 @@ async function deleteFolderFromDb(req) {
     where: { folderId: folderId },
   });
 
-  const filesToRemove = targetedFolderFiles.map((file) => file.filePath);
-  const response = await supabase.storage.from("uploads").remove(filesToRemove);
+  if (targetedFolderFiles.length !== 0) {
+    const filesToRemove = targetedFolderFiles.map((file) => file.filePath);
+    const response = await supabase.storage
+      .from("uploads")
+      .remove(filesToRemove);
+  }
 
   await prisma.folder.delete({
     where: { id: folderId },
