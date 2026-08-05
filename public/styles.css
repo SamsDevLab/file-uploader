@@ -322,12 +322,47 @@ h2 {
 }
 
 .folder-and-file-container {
-  border: 1px solid cornflowerblue;
+  border: 1px solid #0b132b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .folder-and-file-container:hover {
   cursor: pointer;
   background-color: lightgray;
+}
+
+.action-button-container {
+  min-width: 75%;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.action-button-container button,
+.action-button-container form button {
+  font-family: "Inter";
+  background-color: #00f5d4;
+  color: #0b132b;
+  padding: 0.25rem;
+  border-radius: 0.2rem;
+  border: none;
+  flex: 1;
+}
+
+.action-button-container button:hover,
+.action-button-container form:hover {
+  background-color: #00d6b9;
+  cursor: pointer;
+}
+
+.action-button-container form {
+  display: flex;
+  flex: 1;
 }
 
 /*********************/
