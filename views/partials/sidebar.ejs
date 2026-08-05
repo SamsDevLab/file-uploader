@@ -47,3 +47,24 @@
     <a href="/dashboard">Home</a>
   </div>
 </div>
+<dialog class="folder-and-file-dialog" id="create-folder-dialog">
+  <h3>Create a New Folder</h3>
+  <form class="create-and-rename-form" action="/dashboard/create-folder" method="POST">
+    <div class="dialog-form-field">
+      <label for="newFolder">Folder Name: </label>
+      <input type="text" id="newFolder" name="newFolder" />
+    </div>
+    <div class="action-button-container">
+      <button type="button"
+        onclick="document.getElementById('create-folder-dialog').close()"
+      >
+        Cancel
+      </button>
+      <button
+        onclick="document.getElementById('create-folder-dialog').close()"
+      >
+        Create
+      </button>
+    </div>
+  </form>
+</dialog> 

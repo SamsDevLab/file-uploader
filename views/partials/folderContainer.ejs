@@ -32,9 +32,13 @@
     </form>
   </div>
 </div>
-<dialog class="folder-dialog" id="rename-folder-dialog-<%=folder.id%>">
+<dialog class="folder-and-file-dialog" id="rename-folder-dialog-<%=folder.id%>">
   <h3>Rename Folder</h3>
-  <form action="/dashboard/folders/<%= folder.id%>/rename" method="POST">
+  <form
+    class="create-and-rename-form"
+    action="/dashboard/folders/<%= folder.id%>/rename"
+    method="POST"
+  >
     <div class="dialog-form-field">
       <label for="renameFolder">Folder: </label>
       <input
@@ -44,14 +48,18 @@
         value="<%= folder.name %>"
       />
     </div>
-    <button
-      type="button"
-      onclick="
-        document.getElementById('rename-folder-dialog-<%=folder.id %>').close()
-      "
-    >
-      Cancel
-    </button>
-    <button>Rename</button>
+    <div class="action-button-container">
+      <button
+        type="button"
+        onclick="
+          document
+            .getElementById('rename-folder-dialog-<%=folder.id %>')
+            .close()
+        "
+      >
+        Cancel
+      </button>
+      <button>Rename</button>
+    </div>
   </form>
 </dialog>
