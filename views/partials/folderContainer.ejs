@@ -1,7 +1,37 @@
 <div class="folder-and-file-container">
-  <a class="folder-name" href="/dashboard/folders/<%= folder.id %>">
-    <h2><%=folder.name %></h2>
-  </a>
+  <div class="title-and-menu-container">
+    <a class="folder-name" href="/dashboard/folders/<%= folder.id %>">
+      <h2><%=folder.name %></h2>
+    </a>
+    <div class="dropdown-folder-and-file">
+      <svg
+        width="16px"
+        height="16px"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="#1C2541"
+        class="bi bi-three-dots-vertical"
+      >
+        <path
+          d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+        />
+      </svg>
+      <div class="dropdown-content-folder-and-file">
+        <button
+          onclick="
+            document
+              .querySelector(`[data-rename-folder-dialog='<%=folder.id%>']`)
+              .showModal()
+          "
+        >
+          Rename
+        </button>
+        <form action="/dashboard/folders/<%= folder.id %>/delete" method="POST">
+          <button class="delete-button">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
   <svg
     width="60px"
     height="60px"
@@ -17,23 +47,12 @@
       stroke-linejoin="round"
     />
   </svg>
-  <div class="action-button-container">
-    <button
-      class="rename-button"
-      onclick="
-        document
-          .getElementById('rename-folder-dialog-<%= folder.id%>')
-          .showModal()
-      "
-    >
-      Rename
-    </button>
-    <form action="/dashboard/folders/<%= folder.id %>/delete" method="POST">
-      <button class="delete-button">Delete</button>
-    </form>
-  </div>
 </div>
-<dialog class="folder-and-file-dialog" id="rename-folder-dialog-<%=folder.id%>">
+
+<dialog
+  class="folder-and-file-dialog"
+  data-rename-folder-dialog="<%= folder.id %>"
+>
   <h3>Rename Folder</h3>
   <form
     class="create-and-rename-form"
@@ -54,7 +73,7 @@
         type="button"
         onclick="
           document
-            .getElementById('rename-folder-dialog-<%=folder.id %>')
+            .querySelector(`[data-rename-folder-dialog='<%=folder.id %>']`)
             .close()
         "
       >

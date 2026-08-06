@@ -345,17 +345,26 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
   gap: 1rem;
   padding: 1rem;
 }
 
+.title-and-menu-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  place-items: center;
+  min-width: 90%;
+}
+
 .folder-name {
   text-decoration: none;
+  grid-column: 2/3;
 }
 
 .folder-name h2 {
-  font-size: 1.6rem;
+  font-size: 1.25rem;
   color: #0b132b;
   padding: 0.5rem;
 }
@@ -368,52 +377,62 @@ h2 {
 .file-container-name {
   font-family: "JetBrainsMono";
   font-size: 1rem;
+  grid-column: 2/3;
 }
 
-.action-button-container {
-  min-width: 75%;
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
+.dropdown-folder-and-file {
+  position: relative;
 }
 
-.action-button-container button,
-.action-button-container form button {
-  font-family: "Inter";
-  padding: 0.25rem;
-  border-radius: 0.2rem;
-  border: none;
-  flex: 1;
-}
-
-.action-button-container button:hover,
-.action-button-container form:hover {
+.dropdown-folder-and-file:hover {
   cursor: pointer;
 }
 
-.action-button-container form {
+.dropdown-content-folder-and-file {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 10rem;
+  border: 2px solid lightgrey;
+}
+
+.dropdown-folder-and-file:hover .dropdown-content-folder-and-file {
   display: flex;
-  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  top: 0.5rem;
+  left: 0.5rem;
+  gap: 1px;
+  background-color: lightgrey;
   border-radius: 0.2rem;
 }
 
-.rename-button {
-  background-color: #0b132b;
-  color: #ffffff;
+.dropdown-content-folder-and-file button,
+.dropdown-content-folder-and-file form button,
+.view-details-link {
+  font-family: "Inter";
+  border: none;
+  min-width: 100%;
+  background-color: white;
+  padding: 0.2rem;
+  color: #0b132b;
+  display: flex;
+  justify-content: center;
 }
 
-.rename-button:hover {
-  background-color: #1c2541;
-  color: #00f5d4;
+.dropdown-content-folder-and-file form {
+  min-width: 100%;
 }
 
-.delete-button {
-  background-color: #ef4444;
-  color: #ffffff;
+.dropdown-content-folder-and-file button:hover,
+.dropdown-content-folder-and-file form button:hover,
+.view-details-link:hover {
+  background-color: darkgrey;
+  cursor: pointer;
 }
 
-.delete-button:hover {
-  background-color: #dc2626;
+.view-details-link {
+  text-decoration: none;
 }
 
 /*********************/

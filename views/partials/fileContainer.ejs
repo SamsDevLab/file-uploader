@@ -1,28 +1,45 @@
 <div class="folder-and-file-container">
-  <h3 class="file-container-name"><%= file.originalname %></h3>
+  <div class="title-and-menu-container">
+    <h3 class="file-container-name"><%= file.originalname %></h3>
+    <div class=" dropdown-folder-and-file">
+      <svg
+        width="16px"
+        height="16px"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="#1C2541"
+        class="bi bi-three-dots-vertical"
+      >
+        <path
+          d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+        />
+      </svg>
+      <div class="dropdown-content-folder-and-file">
+        <a class="view-details-link" href="/dashboard/files/<%= file.id %>/view-details">View Details</a>
+        <button 
+            onclick="
+            document.querySelector(`[data-rename-file-dialog='<%= file.id %>']`).showModal()
+          "
+          >
+          Rename
+        </button>
+        <form action="/dashboard/files/<%= file.id %>/delete" method="POST">
+          <% if (folderId === null){ %>
+          <input type="hidden" name="folderId" value="" />
+          <% } else { %>
+          <input type="hidden" name="folderId" value="<%= folderId %>">
+          <% } %>
+          <button class="delete-button">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
   <svg width="60px" height="60px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M19 9V17.8C19 18.9201 19 19.4802 18.782 19.908C18.5903 20.2843 18.2843 20.5903 17.908 20.782C17.4802 21 16.9201 21 15.8 21H8.2C7.07989 21 6.51984 21 6.09202 20.782C5.71569 20.5903 5.40973 20.2843 5.21799 19.908C5 19.4802 5 18.9201 5 17.8V6.2C5 5.07989 5 4.51984 5.21799 4.09202C5.40973 3.71569 5.71569 3.40973 6.09202 3.21799C6.51984 3 7.0799 3 8.2 3H13M19 9L13 3M19 9H14C13.4477 9 13 8.55228 13 8V3" stroke="#0b132b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-  <div class="action-button-container">
-  <button class="rename-button"
-    onclick="
-      document.getElementById('rename-file-dialog-<%= file.id %>').showModal()
-    "
-  >
-    Rename
-  </button>
-  <form action="/dashboard/files/<%= file.id %>/delete" method="POST">
-      <% if (folderId === null){ %>
-        <input type="hidden" name="folderId" value="" />
-      <% } else { %>
-        <input type="hidden" name="folderId" value="<%= folderId %>">
-      <% } %>
-    <button class="delete-button">Delete</button>
-  </form>
-  </div>
-  <a href="/dashboard/files/<%= file.id %>/view-details">View Details</a>
+  </svg>
 </div>
-<dialog class="folder-and-file-dialog" id="rename-file-dialog-<%=file.id%>">
+
+<dialog class="folder-and-file-dialog" data-rename-file-dialog="<%=file.id%>">
   <h3>Rename File</h3>
   <form class="create-and-rename-form" action="/dashboard/files/<%= file.id%>/rename" method="POST">
     <div class="dialog-form-field">
@@ -43,7 +60,7 @@
       <button
         type="button"
         onclick="
-          document.getElementById('rename-file-dialog-<%=file.id %>').close()
+           document.querySelector(`[data-rename-file-dialog='<%= file.id %>']`).close()
         "
       >
         Cancel
