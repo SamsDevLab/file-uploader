@@ -239,19 +239,25 @@ h2 {
 
 .dashboard {
   display: grid;
-  grid-template-columns: 0.5fr 3fr;
+  grid-template-columns: 0.4fr 3fr;
 }
 
 .sidebar {
   display: flex;
   padding: 1rem;
   flex-direction: column;
+  background-color: #0b132b;
+  color: #00f5d4;
   gap: 1rem;
-  border-right: 2px solid orange;
+  font-family: "Inter";
 }
 
 .sidebar button {
-  padding: 1rem;
+  padding: 0.75rem;
+  background-color: #00f5d4;
+  color: #0b132b;
+  border: none;
+  border-radius: 0.2rem;
 }
 
 .sidebar button:hover {
@@ -295,13 +301,6 @@ h2 {
 
 .dialog-form-field input {
   padding-left: 0.1rem;
-}
-
-.action-btn-container {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-  align-items: center;
 }
 
 /*** Dropdown ***/
@@ -381,8 +380,6 @@ h2 {
 .action-button-container button,
 .action-button-container form button {
   font-family: "Inter";
-  background-color: #00f5d4;
-  color: #0b132b;
   padding: 0.25rem;
   border-radius: 0.2rem;
   border: none;
@@ -391,7 +388,6 @@ h2 {
 
 .action-button-container button:hover,
 .action-button-container form:hover {
-  background-color: #00d6b9;
   cursor: pointer;
 }
 
@@ -399,6 +395,25 @@ h2 {
   display: flex;
   flex: 1;
   border-radius: 0.2rem;
+}
+
+.rename-button {
+  background-color: #0b132b;
+  color: #ffffff;
+}
+
+.rename-button:hover {
+  background-color: #1c2541;
+  color: #00f5d4;
+}
+
+.delete-button {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.delete-button:hover {
+  background-color: #dc2626;
 }
 
 /*********************/

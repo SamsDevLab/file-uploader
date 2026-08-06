@@ -19,6 +19,7 @@
   </svg>
   <div class="action-button-container">
     <button
+      class="rename-button"
       onclick="
         document
           .getElementById('rename-folder-dialog-<%= folder.id%>')
@@ -28,7 +29,7 @@
       Rename
     </button>
     <form action="/dashboard/folders/<%= folder.id %>/delete" method="POST">
-      <button>Delete</button>
+      <button class="delete-button">Delete</button>
     </form>
   </div>
 </div>
