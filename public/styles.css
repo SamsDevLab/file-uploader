@@ -320,7 +320,6 @@ h2 {
 .folder-and-file-dialog h3 {
   font-family: "JetBrainsMono";
   font-size: 1.25rem;
-  padding: 0.5rem;
 }
 
 .folder-and-file-dialog[open] {
