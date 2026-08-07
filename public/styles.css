@@ -242,6 +242,7 @@ h2 {
   grid-template-columns: 0.4fr 3fr;
 }
 
+/*** Sidebar and Dropdown ***/
 .sidebar {
   display: flex;
   padding: 1rem;
@@ -252,7 +253,7 @@ h2 {
   font-family: "Inter";
 }
 
-.sidebar button {
+#new-button {
   padding: 0.75rem;
   background-color: #00f5d4;
   color: #0b132b;
@@ -262,6 +263,46 @@ h2 {
 
 .sidebar button:hover {
   cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  /* max-width: 50%; */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: darkgray;
+  border: 2px solid darkgray;
+  border-radius: 0.2rem;
+}
+
+.dropdown:hover .dropdown-content {
+  min-width: 10rem;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown:hover .dropdown-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  /* max-width: 100%; */
+}
+
+.dropdown-sidebar-button {
+  background-color: #ffffff;
+  border: none;
+  color: #0b132b;
+  min-width: 100%;
+  padding: 0.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.dropdown-sidebar-button:hover {
+  cursor: pointer;
+  background-color: darkgrey;
 }
 
 .folder-and-file-dialog {
@@ -302,29 +343,6 @@ h2 {
 
 .dialog-form-field input {
   padding-left: 0.1rem;
-}
-
-/*** Dropdown ***/
-
-.dropdown {
-  position: relative;
-  min-width: 100%;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-}
-
-.dropdown-content {
-  border: 2px solid orange;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 
 /*** Main ***/

@@ -14,18 +14,18 @@
           enctype="multipart/form-data"
           method="POST"
         >
-        <label for="file-upload">
-          <input
-            type="file"
-            class="form-control-file"
-            name="uploadedFile"
-            id="file-upload"
-            onchange="this.form.requestSubmit()"
-          />
-        </label>
+        <label class="dropdown-sidebar-button" for="file-upload">Upload File</label>
+        <input
+          type="file"
+          name="uploadedFile"
+          id="file-upload"
+          onchange="this.form.requestSubmit()"
+          hidden
+        />
+        
       </form>
       <% if (folderId === null) { %>
-        <button
+        <button class="dropdown-sidebar-button"
         onclick="document.getElementById('create-folder-dialog').showModal()"
       >
         New Folder
