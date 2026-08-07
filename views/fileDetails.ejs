@@ -22,14 +22,16 @@
           <p>Media Type:</p>
           <p><%= fileDetails.mimetype %></p>
         </div>
-        <a href="/dashboard/files/<%=fileDetails.id%>/download"
-          >Download File</a
-        >
-        <% if (folderId !== null) { %>
-          <a href="/dashboard/folders/<%= folderId %>">Back</a>
-        <% } else { %>
-          <a href="/dashboard">Back</a>
-        <% } %>
+        <div class="file-details-action-container">
+          <% if (folderId !== null) { %>
+            <a class="file-details-button" href="/dashboard/folders/<%= folderId %>">Back</a>
+          <% } else { %>
+            <a class="file-details-button" href="/dashboard">Back</a>
+          <% } %>
+          <a class="file-details-button" href="/dashboard/files/<%=fileDetails.id%>/download"
+            >Download</a
+          >
+        </div>
       </section>
     </main>
     <%- include("partials/footer.ejs") %>
