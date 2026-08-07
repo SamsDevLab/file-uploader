@@ -3,6 +3,19 @@ const supabase = require("../config/supabase");
 const fs = require("fs/promises");
 const path = require("node:path");
 
+function truncatePropertyForDisplay(objArr, property, maxLength = 15) {
+  return objArr.map((object) => {
+    if (object[property].length <= 15) {
+      return object;
+    }
+
+    return {
+      ...object,
+      [property]: object[property].slice(0, maxLength) + "...",
+    };
+  });
+}
+
 async function getAllDashboardFiles(req) {
   const userId = req.user;
 
@@ -18,7 +31,10 @@ async function getAllDashboardFiles(req) {
 
   if (files.length === 0) {
     return null;
-  } else return files;
+  } else {
+    const newFilesArr = await truncatePropertyForDisplay(files, "originalname");
+    return newFilesArr;
+  }
 }
 
 async function getAllFolders(req) {
@@ -34,7 +50,10 @@ async function getAllFolders(req) {
 
   if (folders.length === 0) {
     return null;
-  } else return folders;
+  } else {
+    const newFoldersArr = await truncatePropertyForDisplay(folders, "name");
+    return newFoldersArr;
+  }
 }
 
 async function addFileToDb(req) {
@@ -104,7 +123,12 @@ async function getFolderContents(req) {
     },
   });
 
-  const folderNameAndFiles = { folderName: folderContents.name, files: files };
+  const newFilesArr = await truncatePropertyForDisplay(files, "originalname");
+
+  const folderNameAndFiles = {
+    folderName: folderContents.name,
+    files: newFilesArr,
+  };
 
   return folderNameAndFiles;
 }
