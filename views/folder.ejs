@@ -5,15 +5,16 @@
     <%- include("partials/header.ejs") %>
     <main class="dashboard">
         <%- include("partials/sidebar.ejs", {folderId, errorMessage}) %>
+      <div>
+        <h2 class="folder-header"><%= folderContents.folderName %></h2>
         <div class="dash-main">
         <% if (folderContents !== undefined) { %>
-            <h2 class="folder-name"><%= folderContents.folderName %></h2>
            <% folderContents.files.forEach(file => { %>
               <%- include("partials/fileContainer.ejs", {folderId, file}) %>
            <% }) %>
         <% } %>
         </div>
+      </div>
     </main>
-    <%- include("partials/footer.ejs") %>
   </body>
 </html>

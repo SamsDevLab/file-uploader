@@ -337,6 +337,10 @@ h2 {
   gap: 1rem;
 }
 
+.folder-header {
+  padding: 1rem 0 0 1rem;
+}
+
 /***********************/
 /*** Folder Details ***/
 /*********************/
