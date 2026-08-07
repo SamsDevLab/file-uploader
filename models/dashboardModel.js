@@ -6,12 +6,12 @@ const path = require("node:path");
 function truncatePropertyForDisplay(objArr, property, maxLength = 10) {
   return objArr.map((object) => {
     if (object[property].length <= maxLength) {
-      return object;
+      return { ...object, truncatedName: null };
     }
 
     return {
       ...object,
-      [property]: object[property].slice(0, maxLength) + "...",
+      truncatedName: object[property].slice(0, maxLength) + "...",
     };
   });
 }
