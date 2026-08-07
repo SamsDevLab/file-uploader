@@ -279,6 +279,7 @@ h2 {
 .folder-and-file-dialog h3 {
   font-family: "JetBrainsMono";
   font-size: 1.25rem;
+  padding: 0.5rem;
 }
 
 .folder-and-file-dialog[open] {
@@ -347,7 +348,7 @@ h2 {
   align-items: center;
   justify-content: start;
   gap: 1rem;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .title-and-menu-container {
@@ -355,7 +356,7 @@ h2 {
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   place-items: center;
-  min-width: 90%;
+  min-width: 100%;
 }
 
 .folder-name {
@@ -376,8 +377,10 @@ h2 {
 
 .file-container-name {
   font-family: "JetBrainsMono";
-  font-size: 1rem;
+  font-size: 1.25rem;
   grid-column: 2/3;
+  white-space: nowrap;
+  padding: 0.5rem;
 }
 
 .dropdown-folder-and-file {
@@ -386,6 +389,9 @@ h2 {
 
 .dropdown-folder-and-file:hover {
   cursor: pointer;
+  background-color: darkgray;
+  padding: 0.2rem;
+  border-radius: 0.2rem;
 }
 
 .dropdown-content-folder-and-file {
