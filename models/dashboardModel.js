@@ -3,9 +3,9 @@ const supabase = require("../config/supabase");
 const fs = require("fs/promises");
 const path = require("node:path");
 
-function truncatePropertyForDisplay(objArr, property, maxLength = 15) {
+function truncatePropertyForDisplay(objArr, property, maxLength = 10) {
   return objArr.map((object) => {
-    if (object[property].length <= 15) {
+    if (object[property].length <= maxLength) {
       return object;
     }
 
