@@ -15,7 +15,7 @@
         />
       </svg>
       <div class="dropdown-content-folder-and-file">
-        <a class="view-details-link" href="/dashboard/files/<%= file.id %>/view-details">View Details</a>
+        <a class="view-details-link" href="/dashboard/files/<%= file.id %>/view-details" target="_blank">View Details</a>
         <button 
             onclick="
             document.querySelector(`[data-rename-file-dialog='<%= file.id %>']`).showModal()
