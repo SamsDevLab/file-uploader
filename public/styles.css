@@ -196,10 +196,13 @@ h2 {
 #hero-information {
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  padding: 10rem;
-  gap: 1rem;
+  justify-content: center;
+  /* padding: 4rem;
+  gap: 1rem; */
+  padding-left: 8rem;
+  margin-bottom: 4rem;
   align-items: start;
+  gap: 1rem;
 }
 
 #hero-information h2 {
@@ -218,17 +221,22 @@ h2 {
 }
 
 #hero-img-container {
-  padding: 5rem;
   justify-self: center;
   align-self: center;
+  margin-bottom: 6rem;
+  display: flex;
+  padding: 5rem;
+  border: 2px solid #0b132b;
+  border-radius: 0.2rem;
 }
 
 #hero-img-container img {
   border-radius: 0.3rem;
-  max-height: 65%;
+
+  /* max-height: 65%;
   max-width: 65%;
   min-height: 65%;
-  min-width: 65%;
+  min-width: 65%; */
 }
 
 /******************/
