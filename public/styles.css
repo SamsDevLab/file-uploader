@@ -73,15 +73,13 @@ header,
 footer {
   background-color: #0b132b;
   min-width: 100%;
-  padding: 1rem;
+  padding: 1.25rem;
   display: flex;
   align-items: center;
 }
 
 header {
   justify-content: space-between;
-  padding-left: 2rem;
-  padding-right: 2rem;
 }
 
 .auth-container {
@@ -260,6 +258,10 @@ h2 {
   gap: 1rem;
   align-self: center;
   margin-top: auto;
+}
+
+#sidebar-icon-container svg:hover {
+  fill: #00d6b9;
 }
 
 .sidebar button:hover {
