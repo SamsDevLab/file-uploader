@@ -308,7 +308,7 @@ h2 {
 
 .dropdown-sidebar-button:hover {
   cursor: pointer;
-  background-color: darkgrey;
+  background-color: #d4d4d8;
 }
 
 .sidebar-link {
@@ -317,7 +317,7 @@ h2 {
 }
 
 .sidebar-link:hover {
-  color: darkgrey;
+  color: #d4d4d8;
 }
 
 .folder-and-file-dialog {
@@ -383,14 +383,15 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   gap: 1rem;
-  padding: 1.5rem;
+  padding: 0.4rem;
 }
 
 .title-and-menu-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 0.5fr 1fr 0.5fr;
+  gap: 1rem;
   align-items: center;
   place-items: center;
   min-width: 100%;
@@ -402,19 +403,21 @@ h2 {
 }
 
 .folder-name h2 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   color: #0b132b;
   padding: 0.5rem;
+  white-space: nowrap;
 }
 
 .folder-name h2:hover {
-  background-color: #00d6b9;
+  background-color: #d4d4d8;
   border-radius: 0.5rem;
+  padding: 0.5rem;
 }
 
 .file-container-name {
   font-family: "JetBrainsMono";
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   grid-column: 2/3;
   white-space: nowrap;
   padding: 0.5rem;
@@ -422,12 +425,13 @@ h2 {
 
 .dropdown-folder-and-file {
   position: relative;
+  min-width: 1rem;
+  padding: 0.3rem;
 }
 
 .dropdown-folder-and-file:hover {
   cursor: pointer;
-  background-color: darkgray;
-  padding: 0.2rem;
+  background-color: #d4d4d8;
   border-radius: 0.2rem;
 }
 
@@ -435,18 +439,18 @@ h2 {
   display: none;
   position: absolute;
   background-color: #ffffff;
-  min-width: 10rem;
-  border: 2px solid lightgrey;
+  min-width: 8rem;
+  border: 2px solid #d4d4d8;
 }
 
 .dropdown-folder-and-file:hover .dropdown-content-folder-and-file {
   display: flex;
   flex-direction: column;
   align-items: center;
-  top: 0.5rem;
-  left: 0.5rem;
+  top: 1rem;
+  right: 0.5rem;
   gap: 1px;
-  background-color: lightgrey;
+  background-color: #d4d4d8;
   border-radius: 0.2rem;
 }
 
@@ -470,9 +474,14 @@ h2 {
 .dropdown-content-folder-and-file button:hover,
 .dropdown-content-folder-and-file form button:hover,
 .view-details-link:hover {
-  background-color: darkgrey;
+  background-color: #d4d4d8;
   cursor: pointer;
 }
+
+/* Place nth-child code here for the last in the grid */
+/* .dropdown-content-folder-and-file:nth-child(11n):hover {
+  background-color: dodgerblue;
+} */
 
 .view-details-link {
   text-decoration: none;
@@ -512,7 +521,7 @@ h2 {
 
 .file-details-button {
   text-decoration: none;
-  background-color: lightgrey;
+  background-color: #d4d4d8;
   padding: 0.5rem;
   border-radius: 0.2rem;
   color: #0b132b;
