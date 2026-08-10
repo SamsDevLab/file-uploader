@@ -7,10 +7,16 @@
       <section id="hero-information">
         <h2>Online File Vault</h2>
         <h3>Store Files Online</h3>
-        <div class="auth-container">
-          <a href="/auth/login">Log In</a>
-          <a href="/auth/signup">Sign Up</a>
-        </div>
+        <% if (currentUser !== null) { %>
+          <div class="auth-container">
+            <a href="/dashboard/">Dashboard</a>
+          </div>
+        <% } else { %>
+          <div class="auth-container">
+            <a href="/auth/login">Log In</a>
+            <a href="/auth/signup">Sign Up</a>
+          </div>
+        <% } %>
       </section>
       <section id="hero-img-container">
         <img
