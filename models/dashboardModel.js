@@ -11,7 +11,7 @@ function truncatePropertyForDisplay(objArr, property, maxLength = 10) {
 
     return {
       ...object,
-      truncatedName: object[property].slice(0, maxLength) + "...",
+      truncatedName: object[property].trim().slice(0, maxLength) + "...",
     };
   });
 }
