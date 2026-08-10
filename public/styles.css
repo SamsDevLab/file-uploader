@@ -247,47 +247,53 @@ h2 {
   display: flex;
   padding: 1rem;
   flex-direction: column;
+  justify-content: start;
   background-color: #0b132b;
   color: #00f5d4;
-  gap: 1rem;
+  gap: 2rem;
   font-family: "Inter";
 }
 
-#new-button {
-  padding: 0.75rem;
-  background-color: #00f5d4;
-  color: #0b132b;
-  border: none;
-  border-radius: 0.2rem;
+#sidebar-icon-container {
+  font-family: "JetBrainsMono";
+  display: flex;
+  gap: 1rem;
+  align-self: center;
+  margin-top: auto;
 }
 
 .sidebar button:hover {
   cursor: pointer;
 }
 
-.dropdown {
+.dropdown-container {
   position: relative;
-  /* max-width: 50%; */
+}
+
+#dropdown-primary-button {
+  padding: 0.75rem;
+  background-color: #00f5d4;
+  color: #0b132b;
+  border: none;
+  border-radius: 0.2rem;
+  min-width: 100%;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
+  top: 2.75rem;
   background-color: darkgray;
   border: 2px solid darkgray;
   border-radius: 0.2rem;
 }
 
-.dropdown:hover .dropdown-content {
-  min-width: 10rem;
-}
-
-.dropdown:hover .dropdown-content,
-.dropdown:hover .dropdown-content form {
+.dropdown-container:hover .dropdown-content,
+.dropdown-container:hover .dropdown-content form {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
-  /* max-width: 100%; */
+  min-width: 100%;
 }
 
 .dropdown-sidebar-button {
@@ -303,6 +309,15 @@ h2 {
 .dropdown-sidebar-button:hover {
   cursor: pointer;
   background-color: darkgrey;
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.sidebar-link:hover {
+  color: darkgrey;
 }
 
 .folder-and-file-dialog {
