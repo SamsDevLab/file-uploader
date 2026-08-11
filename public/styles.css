@@ -607,6 +607,7 @@ h2 {
   .dashboard {
     display: flex;
     flex-direction: column;
+    justify-content: start;
   }
 
   .dropdown-container,
