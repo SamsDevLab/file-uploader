@@ -206,12 +206,10 @@ h2 {
 #hero-information {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* padding: 4rem;
-  gap: 1rem; */
-  padding-left: 8rem;
+  align-self: center;
+  justify-self: center;
+  padding-left: 4rem;
   margin-bottom: 4rem;
-  align-items: start;
   gap: 1rem;
 }
 
@@ -538,4 +536,54 @@ h2 {
 
 .file-details-button:hover {
   background-color: darkgray;
+}
+
+/***********************/
+/*** Responsiveness ***/
+/*********************/
+@media (1025px <= width <= 1200px) {
+}
+
+@media (769px <= width <= 1024px) {
+}
+
+@media (576px <= width <= 767px) {
+  #hero-img-container {
+    flex-direction: column;
+  }
+}
+
+@media (0px <= width <=767px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (0px <= width <= 575px) {
+  #hero-container {
+    display: flex;
+  }
+  #hero-img-container {
+    display: none;
+  }
+
+  #hero-information {
+    min-height: 100%;
+    align-self: unset;
+    justify-self: unset;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 1rem 2rem;
+    margin: 0;
+  }
+
+  #hero-information h3 {
+    font-size: 3rem;
+    line-height: 1.75;
+  }
+
+  .auth-container {
+    padding-left: 0;
+  }
 }
