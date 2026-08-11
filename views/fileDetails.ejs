@@ -24,11 +24,11 @@
         </div>
         <div class="file-details-action-container">
           <% if (folderId !== null) { %>
-            <a class="file-details-button" href="/dashboard/folders/<%= folderId %>">Back</a>
+            <a class="file-details-button back-button" href="/dashboard/folders/<%= folderId %>">Back</a>
           <% } else { %>
-            <a class="file-details-button" href="/dashboard">Back</a>
+            <a class="file-details-button back-button" href="/dashboard">Back</a>
           <% } %>
-          <a class="file-details-button" href="/dashboard/files/<%=fileDetails.id%>/download"
+          <a class="file-details-button download-button" href="/dashboard/files/<%=fileDetails.id%>/download"
             >Download</a
           >
         </div>

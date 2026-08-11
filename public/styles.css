@@ -90,13 +90,44 @@ header {
 .auth-container a {
   text-decoration: none;
   font-family: "Inter";
-  background-color: #00f5d4;
-  color: #0b132b;
-  padding: 0.6rem;
+  padding: 0.4rem;
   border-radius: 0.2rem;
 }
 
-.auth-container a:hover {
+.login-header-button {
+  border: 1px solid #00f5d4;
+  color: #00f5d4;
+}
+
+.login-header-button:hover {
+  background-color: #00f5d4;
+  color: #0b132b;
+}
+
+.signup-header-button {
+  background-color: #00f5d4;
+  color: #0b132b;
+}
+
+.signup-header-button:hover {
+  background-color: #00d6b9;
+}
+
+.login-dash-button {
+  background-color: #334155;
+  color: #ffffff;
+}
+
+.login-dash-button:hover {
+  background-color: #1e293b;
+}
+
+.signup-dash-button {
+  background-color: #00f5d4;
+  color: #0b132b;
+}
+
+.signup-dash-button:hover {
   background-color: #00d6b9;
 }
 
@@ -175,6 +206,8 @@ h2 {
 
 .form-actions a,
 .form-actions button {
+  display: flex;
+  justify-content: center;
   text-decoration: none;
   font-family: "Inter";
   background-color: #00f5d4;
@@ -184,7 +217,15 @@ h2 {
   flex: 1;
 }
 
-.form-actions a:hover,
+.form-actions a {
+  background-color: #334155;
+  color: #ffffff;
+}
+
+.form-actions a:hover {
+  background-color: #1e293b;
+}
+
 .form-actions button:hover {
   background-color: #00d6b9;
   cursor: pointer;
@@ -344,6 +385,34 @@ h2 {
   font-size: 1.25rem;
 }
 
+.action-button-container button {
+  padding: 0.4rem;
+  border: none;
+  border-radius: 0.2rem;
+}
+
+.action-button-container button:hover {
+  cursor: pointer;
+}
+
+.action-cancel-button {
+  background-color: #334155;
+  color: #ffffff;
+}
+
+.action-cancel-button:hover {
+  background-color: #1e293b;
+}
+
+.action-rename-button {
+  background-color: #00f5d4;
+  color: #0b132b;
+}
+
+.action-rename-button:hover {
+  background-color: #00d6b9;
+}
+
 .folder-and-file-dialog[open] {
   display: flex;
   flex-direction: column;
@@ -486,11 +555,6 @@ h2 {
   cursor: pointer;
 }
 
-/* Place nth-child code here for the last in the grid */
-/* .dropdown-content-folder-and-file:nth-child(11n):hover {
-  background-color: dodgerblue;
-} */
-
 .view-details-link {
   text-decoration: none;
 }
@@ -529,14 +593,26 @@ h2 {
 
 .file-details-button {
   text-decoration: none;
-  background-color: #d4d4d8;
   padding: 0.5rem;
   border-radius: 0.2rem;
+}
+
+.back-button {
+  background-color: #334155;
+  color: #ffffff;
+}
+
+.back-button:hover {
+  background-color: #1e293b;
+}
+
+.download-button {
+  background-color: #00f5d4;
   color: #0b132b;
 }
 
-.file-details-button:hover {
-  background-color: darkgray;
+.download-button:hover {
+  background-color: #00d6b9;
 }
 
 /***********************/
@@ -617,6 +693,6 @@ h2 {
 
   /*** Dialog ***/
   .folder-and-file-dialog {
-    transform: translate(20%, 120%);
+    transform: translate(32.5%, 150%);
   }
 }

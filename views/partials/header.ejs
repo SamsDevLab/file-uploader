@@ -6,10 +6,10 @@
   <% } %>
   <div class="auth-container">
     <% if (currentUser === null) { %>
-    <a href="/auth/login">Log In</a>
-    <a href="/auth/signup">Sign Up</a> 
+    <a class="login-header-button" href="/auth/login">Log In</a>
+    <a class="signup-header-button" href="/auth/signup">Sign Up</a> 
     <% } else { %>
-      <a href="/auth/logout">Log Out</a>
+      <a  class="signup-header-button" href="/auth/logout">Log Out</a>
     <% } %>
   </div>
 </header>

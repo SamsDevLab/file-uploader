@@ -61,7 +61,7 @@
       />
     </div>
     <div class="action-button-container">
-      <button
+      <button class="action-cancel-button"
         type="button"
         onclick="
            document.querySelector(`[data-rename-file-dialog='<%= file.id %>']`).close()
@@ -69,7 +69,7 @@
       >
         Cancel
       </button>
-      <button>Rename</button>
+      <button class="action-rename-button">Rename</button>
     </div>
   </form>
 </dialog>
