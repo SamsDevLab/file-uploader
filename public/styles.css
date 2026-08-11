@@ -188,6 +188,10 @@ h2 {
   font-family: "Inter";
 }
 
+.auth-form h2 {
+  color: #0b132b;
+}
+
 .auth-form-field {
   display: flex;
   flex-direction: column;
