@@ -330,7 +330,7 @@ h2 {
 .folder-and-file-dialog {
   background-color: #f4f6f8;
   position: absolute;
-  transform: translate(575px, 150px);
+  transform: translate(125%, 90%);
   min-height: 20%;
   min-width: 30%;
   padding: 1rem;
@@ -374,6 +374,7 @@ h2 {
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 1rem;
+  position: relative;
 }
 
 .folder-header {
@@ -542,14 +543,24 @@ h2 {
 /*** Responsiveness ***/
 /*********************/
 @media (1025px <= width <= 1200px) {
+  .dash-main {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @media (769px <= width <= 1024px) {
+  .dash-main {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (576px <= width <= 767px) {
   #hero-img-container {
     flex-direction: column;
+  }
+
+  .dash-main {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -558,9 +569,14 @@ h2 {
     flex-direction: column;
     gap: 1rem;
   }
+
+  .dash-main {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (0px <= width <= 575px) {
+  /*** Hero Page ***/
   #hero-container {
     display: flex;
   }
@@ -585,5 +601,21 @@ h2 {
 
   .auth-container {
     padding-left: 0;
+  }
+
+  /*** Dashboard ***/
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-container,
+  .sidebar-link {
+    align-self: center;
+  }
+
+  /*** Dialog ***/
+  .folder-and-file-dialog {
+    transform: translate(20%, 120%);
   }
 }
