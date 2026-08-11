@@ -8,6 +8,11 @@ This project was created to deepen my understanding of the Prisma ORM and relati
 
 https://file-uploader-fn86.onrender.com
 
+## 🎬 Demo account:
+
+Email: demo@example.com
+Password: demofileuploader
+
 ## 👓 Overview
 
 File Uploader allows authenticated users to upload files to a personal dashboard or organize them into folders. Users can create, rename, and delete folders, as well as view, download, rename, and delete uploaded files.
