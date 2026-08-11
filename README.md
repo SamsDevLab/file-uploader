@@ -10,7 +10,7 @@ https://file-uploader-fn86.onrender.com
 
 ## 🎬 Demo account:
 
-Email: demo@example.com
+Email: demo@example.com \
 Password: demofileuploader
 
 ## 👓 Overview
