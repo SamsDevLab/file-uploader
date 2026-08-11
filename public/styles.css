@@ -103,6 +103,12 @@ header {
 footer {
   justify-content: center;
   color: #00f5d4;
+  gap: 1rem;
+  align-items: center;
+}
+
+footer svg:hover {
+  fill: #00d6b9;
 }
 
 body {
