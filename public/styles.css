@@ -163,6 +163,10 @@ h2 {
   gap: 0.25rem;
 }
 
+.auth-form-field input {
+  padding-left: 0.1rem;
+}
+
 .form-actions {
   display: flex;
   gap: 1rem;
